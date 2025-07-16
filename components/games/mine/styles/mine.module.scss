@@ -1,0 +1,854 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+// 임시 시작
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  .game-wrapper {
+    width: 100%;
+    // height: 504px;
+    padding: 60px 40px 36px 40px;
+    background-image: url("/images/game/mine/img_mine_bg.webp");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    @include mobile {
+      padding: 16px;
+    }
+
+    .bread-comp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      top: 16px;
+      left: 40px;
+      position: absolute;
+
+      span {
+        padding: 8px;
+        &:nth-child(1) {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          line-height: 1.5;
+        }
+        &:nth-child(2) {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+          padding: 0;
+        }
+        &:nth-child(3) {
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+      }
+      @include mobile {
+        display: none;
+      }
+    }
+    .result-container {
+      width: 100%;
+      max-width: 678px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 auto;
+      .result-row {
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        width: 100%;
+        // height: 37px;
+        padding: 4px;
+
+        overflow: hidden;
+        .not-login-row {
+          width: 100%;
+          text-align: center;
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.6;
+        }
+
+        @keyframes transform {
+          0% {
+            transform: translateX(54px);
+          }
+          100% {
+            transform: translateX(0px);
+          }
+        }
+
+        .coin-row {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          // padding: 0 4px;
+          gap: 4px;
+          transform: translateX(0px);
+          &.ani {
+            animation: transform 500ms linear alternate;
+          }
+
+          div {
+            transition: none;
+            // width: 54px;
+            padding: 0 8px;
+            height: 29px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background: var(--neutral-variants-nv-700);
+            @include mobile {
+              height: auto;
+              border-radius: 4px;
+              padding: 0 4px;
+            }
+            > span {
+              color: var(--surface-on-surface-var);
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 1.5;
+              opacity: 0.6;
+              @include mobile {
+                font-size: 12px;
+              }
+            }
+            &.win {
+              background: #69338a;
+              > span {
+                color: var(--surface-on-surface);
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .mine-wrapper {
+    // width: 80%;
+
+    // padding: 40px;
+    padding: 12px 0px;
+    // max-width: 544px;
+    border-radius: 8px;
+    background: rgba(115, 50, 104, 0.6);
+    margin: auto;
+    margin-top: 12px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto;
+    margin-top: 12px;
+    width: 544px;
+    height: 332px;
+    @include tablet {
+      padding: 8px 0;
+      width: 456px;
+      height: 392px;
+    }
+    @include desktop {
+      &.tablet {
+        padding: 8px 0;
+        width: 456px;
+        height: 392px;
+      }
+    }
+    @include mobile {
+      width: 100%;
+      aspect-ratio: none;
+      padding: 8px;
+      flex-direction: column;
+      height: auto;
+    }
+
+    div {
+      // fleㄷ.x-basis: 80px;
+      // flex: 1;
+      &.game-area {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        // flex: 1;
+        @include tablet {
+          flex-direction: column;
+          gap: 8px;
+        }
+        @include desktop {
+          &.tablet {
+            flex-direction: column;
+            gap: 8px;
+          }
+        }
+        .mine-info {
+          width: 80px;
+          @include tablet {
+            width: 100%;
+          }
+          @include desktop {
+            &.tablet {
+              width: 100%;
+            }
+          }
+        }
+        .mine-container {
+          width: 328px;
+          aspect-ratio: 1 / 1;
+          // @include tablet {
+          //   width: 100%;
+          // }
+          // @include desktop {
+          //   &.tablet {
+          //     width: 100%;
+          //   }
+          // }
+          @include mobile {
+            width: 100%;
+          }
+        }
+      }
+
+      &.payout-box {
+        width: 80px;
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
+
+    .payout-box {
+      padding: 4px;
+      border-radius: 8px;
+      background: rgba(107, 31, 125, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-direction: column;
+      @include mobile {
+        flex-direction: row;
+        height: 52px;
+      }
+      > button {
+        width: 100%;
+        aspect-ratio: 3 / 1;
+        border-radius: 6px;
+        // background: #7f4681;
+        background: #903392;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include mobile {
+          width: 23px;
+          aspect-ratio: none;
+          height: 100%;
+        }
+        &.up {
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-image: url("/images/common/ico_arrow_g.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            // opacity: 0.6;
+            transform: rotate(180deg);
+            @include mobile {
+              transform: rotate(90deg);
+            }
+          }
+        }
+        &.down {
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-image: url("/images/common/ico_arrow_g.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            // opacity: 0.6;
+            @include mobile {
+              transform: rotate(-90deg);
+            }
+          }
+        }
+      }
+      .scroll-box {
+        flex: 1;
+        width: 100%;
+        overflow-y: scroll;
+        @include mobile {
+          width: auto;
+          flex: 1;
+          overflow-x: scroll;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 4px;
+          height: 100%;
+          overflow-y: visible;
+        }
+
+        > div.box {
+          margin-bottom: 4px;
+          padding: 4px 0px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          border-radius: 6px;
+          background: #46134e;
+          opacity: 0.5;
+
+          @include mobile {
+            margin-bottom: 0;
+            max-width: 56px;
+            padding: 4px 8px;
+          }
+
+          &.active {
+            opacity: 1;
+          }
+
+          > div {
+            &:first-child {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 4px;
+              &::before {
+                content: "";
+                background-image: url("/images/game/mine/img_candy.webp");
+                background-position: center;
+                width: 12px;
+                height: 12px;
+                background-size: cover;
+                background-repeat: no-repeat;
+              }
+              > span {
+                color: #d0a9d7;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 1.5;
+              }
+            }
+            &:last-child {
+              color: #d0a9d7;
+              font-size: 14px;
+              font-weight: 700;
+              line-height: 1.5;
+              @include mobile {
+                font-size: 12px;
+                word-wrap: nowrap;
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+      }
+    }
+    .mine-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      // gap: 4px;
+      background: rgba(107, 31, 125, 0.8);
+      border-radius: 8px;
+      height: 100%;
+      padding: 4px;
+      position: relative;
+      overflow: hidden;
+      @include tablet {
+        height: auto;
+      }
+      @include desktop {
+        &.tablet {
+          height: auto;
+        }
+      }
+      .win-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        // transform: translate(-50%, -50%);
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > .dim {
+          width: 85%;
+          height: 70%;
+          border-radius: 100%;
+          position: absolute;
+          left: 50%;
+          top: 45%;
+          // background-color: red;
+          z-index: -2;
+          transform: translate(-50%, -50%);
+          background: radial-gradient(
+            50% 50% at 50% 50%,
+            rgba(46, 34, 34, 0.5) 0%,
+            rgba(46, 34, 34, 0) 100%
+          );
+          background-blend-mode: multiply;
+          filter: blur(2px);
+          backdrop-filter: blur(1px);
+        }
+
+        @keyframes popBounceOut {
+          0%,
+          60%,
+          75%,
+          90%,
+          100% {
+            -webkit-transition-timing-function: cubic-bezier(
+              0.215,
+              0.61,
+              0.355,
+              1
+            );
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          }
+          0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, -3000px, 0);
+            transform: translate3d(0, -3000px, 0);
+          }
+          60% {
+            opacity: 1;
+            -webkit-transform: translate3d(0, 25px, 0);
+            transform: translate3d(0, 25px, 0);
+          }
+          75% {
+            -webkit-transform: translate3d(0, -10px, 0);
+            transform: translate3d(0, -10px, 0);
+          }
+          90% {
+            -webkit-transform: translate3d(0, 5px, 0);
+            transform: translate3d(0, 5px, 0);
+          }
+          100% {
+            -webkit-transform: none;
+            transform: none;
+          }
+        }
+
+        > div.box {
+          width: 64%;
+          // aspect-ratio: 1 / 0.53;
+          border-radius: 16px;
+          border: 4px solid #ff6bc3;
+          background: #880014;
+          padding: 8px;
+          position: relative;
+          // transform: scale(0);
+          // transition: transform 300ms !important;
+          // opacity: 0;
+
+          &.active {
+            // transform: scale(1);
+            // transition: transform 300ms !important;
+
+            animation-name: popBounceOut;
+            animation-duration: 0.6s;
+            animation-fill-mode: both;
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 73%;
+            aspect-ratio: 1/1;
+            top: -64%;
+            transform: translateX(-50%);
+            background-image: url("/images/game/mine/img_winmodal_flower.webp");
+            background-position: top center;
+            background-size: 100%;
+            z-index: -1;
+          }
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 130%;
+            aspect-ratio: 1/0.43;
+            top: -55%;
+            transform: translateX(-50%);
+            background-image: url("/images/game/mine/img_winmodal_title.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            // z-index: -1;
+          }
+
+          .content {
+            padding: 12px 4px 4px 4px;
+            border-radius: 8px;
+            background: #dc0b63;
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            > span {
+              color: #fff;
+              font-family: Poppins;
+              font-size: 24px;
+              font-weight: 700;
+              line-height: 1.5;
+            }
+            > .info {
+              width: 100%;
+              padding: 4px;
+              padding-left: 12px;
+              border-radius: 16px;
+              background: var(--surface-scrim, rgba(19, 22, 27, 0.8));
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 4px;
+              > span {
+                color: var(--surface-on-surface);
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.5;
+                &.ico {
+                  width: 24px;
+                  height: 24px;
+                  background-position: center;
+                  background-size: calc(100% - 4px);
+                  background-repeat: no-repeat;
+                  transition: background-image 0ms;
+                  border-radius: 100%;
+                  display: block;
+                  background-color: var(--surface-surface);
+                  &.eth {
+                    background-image: var(--img-token-eth-circle);
+                  }
+                  &.bnb {
+                    background-image: var(--img-token-bnb-circle);
+                  }
+                  &.btc {
+                    background-image: var(--img-token-btc-circle);
+                  }
+                  &.usdt {
+                    background-image: var(--img-token-usdt-circle);
+                  }
+                  &.jel {
+                    background-image: var(--img-token-jel-circle);
+                  }
+                  &.hon {
+                    background-image: var(--img-token-hon-circle);
+                  }
+                  &.xrp {
+                    background-image: var(--img-token-xrp-circle);
+                  }
+                  &.usdc {
+                    background-image: var(--img-token-usdc-circle);
+                  }
+                  &.jel_lock {
+                    background-image: var(--img-token-usdc-circle);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      * {
+        transition: none;
+      }
+
+      .item {
+        border-radius: 15%;
+        background-color: #46134e99;
+        padding: 2px;
+        background-image: url("/images/game/mine/img_tile.webp");
+        background-position: center;
+        background-size: calc(100% - 8px);
+        background-repeat: no-repeat;
+        position: relative;
+        > button {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          z-index: 15;
+        }
+        // > div {
+        //   transform: translate(-50%, -50%) scale(0);
+        // }
+        &.fire {
+          > div {
+            // background-image: url("/images/game/mine/img_fire.gif") !important;
+            // background-color: red;
+            background-position: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 200%;
+            height: 200%;
+            z-index: 10;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1.3);
+            transition: none;
+            opacity: 1;
+            > img {
+              width: 100%;
+            }
+          }
+        }
+        &.bomb {
+          > button {
+            background-image: url("/images/game/mine/img_bomb.webp");
+            background-position: center;
+            background-size: 74%;
+            background-repeat: no-repeat;
+          }
+        }
+        &.candy {
+          > button {
+            background-image: url("/images/game/mine/img_candy.webp");
+            background-position: center;
+            background-size: 74%;
+            background-repeat: no-repeat;
+          }
+        }
+        &.dim {
+          opacity: 0.6;
+        }
+        &.seleted {
+          background-image: none;
+        }
+        &.autobet-seleted {
+          background-image: url("/images/game/mine/img_tile_b.webp");
+          &.game-end {
+            background-image: none;
+          }
+        }
+        &.case {
+          background-image: url("/images/game/mine/img_candycase.webp") !important;
+        }
+      }
+    }
+    .mine-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+      }
+      @include desktop {
+        &.tablet {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+      > div {
+        padding: 10px;
+        border-radius: 8px;
+        background: rgba(107, 31, 125, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+        @include tablet {
+          gap: 8px;
+        }
+        @include desktop {
+          &.tablet {
+            gap: 8px;
+          }
+        }
+        > span {
+          color: #fff;
+          font-family: Poppins;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1.5;
+        }
+        &:first-child {
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-image: url("/images/game/mine/img_candy.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+          }
+        }
+        &:last-child {
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-image: url("/images/game/mine/img_bomb.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+          }
+        }
+        @include tablet {
+          flex: 1;
+          flex-direction: row;
+          padding: 8px;
+          > span {
+            font-size: 16px;
+          }
+          &:first-child {
+            &::before {
+              width: 20px;
+            }
+          }
+          &:last-child {
+            &::before {
+              width: 20px;
+            }
+          }
+        }
+        @include desktop {
+          &.tablet {
+            flex: 1;
+            flex-direction: row;
+            padding: 8px;
+            > span {
+              font-size: 16px;
+            }
+            &:first-child {
+              &::before {
+                width: 20px;
+              }
+            }
+            &:last-child {
+              &::before {
+                width: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .betting-container {
+    // padding: 40px;
+    // padding-bottom: 0;
+    // max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    // gap: 96px;
+    margin-top: 24px;
+  }
+  .bomb-choice-box {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      height: 73px;
+    }
+    .top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 4px;
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        opacity: 0.6;
+        span {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+        .btn-tooltip {
+          width: 16px;
+          height: 16px;
+          margin-left: 4px;
+          background-image: url("/images/common/ico_tooltip_g.svg");
+          background-position: center;
+          background-size: cover;
+        }
+      }
+    }
+    .swipe-box {
+      padding: 0 12px;
+      flex: 1;
+      border-radius: 6px;
+      border: 1px solid var(--surface-outline-var);
+      background: var(--surface-surf-container-lowest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      .bomb-count-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        &::before {
+          content: "";
+          display: block;
+          background-image: url("/images/game/mine/img_bomb.webp");
+          width: 24px;
+          height: 24px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+        span {
+          color: var(--surface-on-surface);
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}

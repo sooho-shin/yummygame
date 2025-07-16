@@ -1,0 +1,193 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.input-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 4px;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    span {
+      color: var(--surface-on-surface-var);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0.6;
+    }
+    .btn-tooltip {
+      width: 16px;
+      height: 16px;
+      margin-left: 4px;
+      background-image: url("/images/common/ico_tooltip_g.svg");
+      background-position: center;
+      background-size: cover;
+    }
+    &.sub {
+      margin-left: auto;
+      opacity: 0.6;
+    }
+  }
+}
+.input-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+
+  .toggle-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 5px;
+    border-radius: 6px;
+    background: var(--surface-surf-container-lowest);
+    flex-basis: 100px;
+    > button {
+      padding: 0 12px;
+      height: 100%;
+      flex: 1;
+      > span {
+        color: var(--surface-on-surface-var);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        white-space: nowrap;
+      }
+      &.active {
+        border-radius: 4px;
+        background: var(--surface-surf-container);
+        > span {
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+      }
+    }
+    &.disabled {
+      background: var(--surface-surf-container-low);
+      > button {
+        background: var(--surface-surf-container-low);
+        &.active {
+          background: var(--surface-surf-container-high);
+        }
+        > span {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+
+  .input-box {
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 1px solid var(--surface-outline-var);
+    background: var(--surface-surf-container-lowest);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    flex: 1;
+    flex-basis: 100px;
+    &.input-box-minmax {
+      padding: 0 8px;
+      .btn-row {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        .minmax-button {
+          width: 38px;
+          height: 32px;
+          border-radius: 4px;
+          background: var(--surface-surf-container-high);
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+      }
+    }
+    > span {
+      &.unit {
+        color: var(--surface-on-surface);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+      &.input-sub {
+        color: var(--surface-on-surface);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+      &.ico {
+        width: 24px;
+        height: 24px;
+        border-radius: 24px;
+        background-color: var(--surface-surface);
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        transition: background-image 0ms;
+        display: block;
+      }
+    }
+    input {
+      color: var(--surface-on-surface);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      flex: 1;
+      width: 1px;
+    }
+    &.disabled {
+      border: 1px solid var(--surface-surf-container);
+      background: var(--surface-surf-container);
+
+      > input {
+        color: #a2aab5;
+        opacity: 0.6;
+      }
+      > .input-sub {
+        color: #a2aab5;
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.minmax-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 4px;
+  > button {
+    flex: 1;
+    border-radius: 6px;
+    background: var(--surface-surf-container-high);
+    padding: 4px 0;
+    color: var(--surface-on-surface);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+}

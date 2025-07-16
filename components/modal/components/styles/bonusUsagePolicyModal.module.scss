@@ -1,0 +1,67 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.bonus-usage-policy-modal {
+  // height: 640px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  max-height: calc(100dvh - 200px);
+  padding-bottom: 24px;
+  @include mobile {
+    padding-bottom: 16px;
+  }
+  > .top {
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+  .content {
+    width: 100%;
+    padding: 24px;
+    padding-bottom: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    overflow-y: scroll;
+    @include mobile {
+      padding: 16px;
+    }
+    > div {
+      > pre {
+        color: var(--surface-on-surface-var);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        white-space: pre-line;
+      }
+      > p {
+        color: var(--surface-on-surface);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+      > a {
+        color: var(--surface-on-surface);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        text-decoration: underline;
+      }
+    }
+  }
+}

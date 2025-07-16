@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.yummygame.io
+
+# Sitemaps
+Sitemap: https://www.yummygame.io/sitemap.xml

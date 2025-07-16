@@ -1,0 +1,43 @@
+.toggle-box {
+  width: 44px;
+  height: 24px;
+  background-color: var(--neutral-neutral-600);
+  position: relative;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 500ms;
+  margin-left: auto;
+
+  span {
+    background-color: var(--neutral-neutral-300);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: all 500ms;
+  }
+  &.active {
+    background-color: var(--semantic-success-800);
+    transition: all 500ms;
+    span {
+      transform: translate(100%, -50%);
+      transition: all 500ms;
+      background-color: var(--semantic-success-500);
+      // right: 2px;
+    }
+    &.theme {
+      background-color: var(--surface-on-surface);
+      transition: all 500ms;
+      span {
+        transform: translate(100%, -50%);
+        transition: all 500ms;
+        background-color: var(--neutral-neutral-300);
+        // right: 2px;
+      }
+    }
+  }
+}

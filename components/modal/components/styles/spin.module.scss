@@ -1,0 +1,254 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.spin-modal-container {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/images/modal/spin/img_bg.webp");
+  background-position: center;
+  background-size: cover;
+  @include mobile {
+    //width: 100dvw !important;
+    //height: 100dvh !important;
+    //border-radius: 0 !important;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  > .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 64px 0 40px 0;
+    position: relative;
+    width: 100%;
+    > button.spin {
+      width: 256px;
+      height: 48px;
+      margin-top: 92px;
+      border-radius: 8px;
+      background: #1261d0;
+      > span {
+        color: var(--Surface-On-Primary-Container, #fbeaee);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+    }
+    .win-modal-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      padding-top: 44px;
+      &.active {
+        z-index: 1000;
+      }
+
+      > div.dim {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 500;
+        opacity: 0.6;
+        background: var(--Surface-Surface-Dim, #111317);
+      }
+      > div.win-modal {
+        width: 320px;
+        height: 245px;
+        background-image: url("/images/modal/spin/img_winmodal.webp");
+        background-position: center;
+        background-size: 296px;
+        background-repeat: no-repeat;
+        position: relative;
+        z-index: 600;
+        padding-top: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0);
+        transition: 200ms ease-in;
+        &.active {
+          transform: scale(1);
+          transition: 200ms ease-in;
+        }
+
+        > div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 164px;
+          padding: 2px 2px 2px 6px;
+          gap: 2px;
+          > span {
+            flex: 1;
+            color: var(--surface-on-surface);
+            text-align: center;
+            font-family: Pretendard;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 12px; /* 120% */
+          }
+          > img {
+            width: 24px;
+          }
+        }
+      }
+    }
+    > .available {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      > p {
+        color: var(--surface-on-surface);
+        text-align: center;
+
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+    }
+    > .banner {
+      position: absolute;
+      left: 50%;
+      bottom: 105px;
+      transform: translateX(-50%);
+      width: 336px;
+    }
+    > .spin-title {
+      width: 214px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      background: linear-gradient(180deg, #fff 0%, #baccf2 100%),
+        var(--Surface-Surf-Container, #1e2228);
+      > span {
+        color: #2459bf;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 1;
+      }
+    }
+
+    > .board-container {
+      width: 100%;
+      width: 304px;
+      height: 304px;
+      position: relative;
+      > .board {
+        width: 100%;
+        height: 100%;
+        background-image: url("/images/modal/spin/img_board.webp");
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        @keyframes float {
+          0% {
+            background-image: url("/images/modal/spin/spin_light_b.webp");
+            background-position: center;
+            background-size: cover;
+          }
+          50% {
+            background-image: url("/images/modal/spin/spin_light_a.webp");
+            background-position: center;
+            background-size: cover;
+          }
+          100% {
+            background-image: url("/images/modal/spin/spin_light_b.webp");
+            background-position: center;
+            background-size: cover;
+          }
+        }
+        > .light {
+          width: calc(100% - 3px);
+          height: calc(100% - 3px);
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          animation: float 700ms infinite;
+        }
+        .spin-item {
+          position: absolute;
+
+          top: calc(50% - 12px);
+          left: calc(50% - 46px);
+          width: 30%;
+          text-align: left;
+          //transform-origin: center -130px; /* 중심으로부터 130px 거리로 배치 */
+          text-align: center;
+          display: flex;
+          //flex-direction: column;
+          align-items: center;
+          justify-content: flex-end;
+          font-size: 12px;
+          //background: white; /* 필요에 따라 조정 */
+          //border-radius: 8px;
+          line-height: 1;
+          padding-right: 10px;
+          > img {
+            width: 24px;
+          }
+        }
+
+        .amount {
+          color: #fff;
+          text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 21px; /* 150% */
+        }
+      }
+      > .spin-btn {
+        width: 79px;
+        height: 78px;
+        border-radius: 100%;
+        background-image: url("/images/modal/spin/img_button.webp");
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding-top: 6px;
+        z-index: 10;
+        > span {
+          color: #fff;
+          text-align: center;
+          text-shadow: 0px 0px 3.2px #092d6b;
+          font-family: Poppins;
+          font-size: 16px;
+          font-weight: 800;
+          line-height: 1.2;
+        }
+      }
+      > .selected {
+        width: 120px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(33px, -50%);
+      }
+    }
+  }
+}

@@ -1,0 +1,338 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.direct-massage-modal {
+  max-height: 680px;
+  height: calc(100dvh - 200px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  width: 782px !important;
+  @include middle {
+    width: 624px !important;
+  }
+  @include mobile {
+    width: calc(100dvw - 48px) !important;
+  }
+
+  .top {
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 56px);
+    position: relative;
+    > .room-list {
+      width: 312px;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      overflow-y: scroll;
+      > .empty-box {
+        width: 100%;
+        height: 100%;
+        background: #23282f;
+      }
+      @include mobile {
+        width: 100%;
+      }
+      > .room {
+        width: 100%;
+        padding: 20px 20px 11px 20px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 12px;
+        &.active,
+        &:hover {
+          background: var(--Surface-Surf-Container-High, #282e35);
+          box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+        }
+        > img {
+          width: 36px;
+        }
+        > .dm-content {
+          flex: 1;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          overflow: hidden;
+          > .dm-title {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            > span {
+              color: var(--surface-on-surface);
+              font-size: 14px;
+              font-weight: 700;
+              line-height: 1.5;
+              flex: 1;
+              text-align: left;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              flex-shrink: 1;
+            }
+            > div.new {
+              width: 5px;
+              height: 5px;
+              border-radius: 100%;
+              background-color: #39c3ff;
+            }
+          }
+          > .dm-content {
+            width: 100%;
+            color: var(--surface-on-surface);
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.5;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            flex-shrink: 1;
+            text-align: left;
+          }
+          > .dm-time {
+            color: var(--surface-on-surface);
+            text-align: right;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+            opacity: 0.5;
+            width: 100%;
+          }
+        }
+      }
+    }
+    > .message-container {
+      flex: 1;
+      height: 100%;
+      //background: var(--Surface-Surf-Container-High, #282e35);
+      @include mobile {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        transform: translateX(100%);
+        transition: transform 300ms;
+
+        &.active {
+          display: flex;
+          transform: translateX(0%);
+          transition: transform 300ms;
+        }
+      }
+
+      > .massage-detail-container {
+        width: 100%;
+        display: flex;
+        align-content: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding: 20px;
+        height: 100%;
+        background: var(--Surface-Surf-Container-High, #282e35);
+
+        > button.live-chat {
+          border-radius: 8px;
+          background: var(--surface-signature-surface);
+
+          width: 108px;
+          height: 38px;
+          margin-top: 20px;
+          align-self: flex-end;
+
+          > span {
+            color: var(--surface-on-signature-surface);
+            text-align: center;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+          }
+        }
+        > p.date {
+          width: 100%;
+          text-align: right;
+          color: var(--surface-on-surface);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+          opacity: 0.5;
+        }
+        .detail-content {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 10px;
+          flex: 1;
+          overflow: hidden;
+          position: relative;
+
+          > .delete-container {
+            padding-top: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 30px;
+            > button.delete-btn {
+              width: 30px;
+              height: 30px;
+              background-image: url("/images/modal/dm/ico_trash.svg");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 24px;
+              transition: none;
+            }
+            > button.cancel-text-btn {
+              color: var(--surface-on-surface);
+              text-align: center;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 1.5;
+              opacity: 0.8;
+            }
+            > button.delete-text-btn {
+              color: var(--Primary-Primary-400, #e2577a);
+              text-align: center;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 1.5;
+            }
+          }
+          @include mobile {
+            gap: 8px;
+          }
+          > button.back-btn {
+            width: 24px;
+            height: 24px;
+            background-image: url("/images/modal/dm/ico_arrow_w.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            //transform: rotate(90deg);
+            margin-top: 4px;
+            display: none;
+            @include mobile {
+              display: block;
+            }
+          }
+          > img {
+            width: 32px;
+            height: 31px;
+          }
+          > .content {
+            flex: 1;
+            display: flex;
+            align-content: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 12px;
+            height: 100%;
+            > .title {
+              color: var(--surface-on-surface);
+              font-family: Poppins;
+              font-size: 16px;
+              font-weight: 700;
+              line-height: 1.5;
+              width: 100%;
+              padding-top: 4px;
+              padding-right: 60px;
+            }
+            .scroll-parent-box {
+              position: relative;
+              width: 100%;
+              flex: 1;
+              overflow: hidden;
+              .dim-top {
+                width: 100%;
+                height: 80px;
+                left: 0;
+                top: 0;
+                position: absolute;
+                background: linear-gradient(
+                  to bottom,
+                  #282e35 0%,
+                  #282e35 10%,
+                  rgba(40, 46, 53, 0.7) 50%,
+                  rgba(40, 46, 53, 0) 100%
+                );
+              }
+              .dim-bottom {
+                width: 100%;
+                height: 80px;
+                left: 0;
+                bottom: 0;
+                position: absolute;
+                background: linear-gradient(
+                  to top,
+                  #282e35 0%,
+                  #282e35 10%,
+                  rgba(40, 46, 53, 0.7) 50%,
+                  rgba(40, 46, 53, 0) 100%
+                );
+              }
+            }
+            .scroll-area {
+              width: 100%;
+              height: 100%;
+              overflow-y: scroll;
+              pre {
+                width: 100%;
+                height: 100%;
+                white-space: pre-line;
+                color: var(--surface-on-surface);
+                font-family: Pretendard;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 18px; /* 150% */
+                word-break: break-all;
+              }
+            }
+          }
+        }
+      }
+      > .empty-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > p {
+          color: var(--surface-on-surface);
+          text-align: center;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}

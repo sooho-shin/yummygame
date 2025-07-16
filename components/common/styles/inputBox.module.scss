@@ -1,0 +1,552 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.input-box {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  * {
+    transition: all 300ms;
+  }
+
+  > p.title {
+    color: var(--surface-on-surface);
+    //color: var(--surface-on-surface-var);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px; /* 150% */
+    position: relative;
+    //opacity: 0.6;
+    &.active {
+      color: var(--surface-on-surface);
+      opacity: 1;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 100%;
+      background-color: var(--surface-signature-surface);
+      position: absolute;
+      top: 50%;
+      left: calc(100% + 4px);
+      transform: translateY(-50%);
+    }
+    &.not-important {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  > p.error {
+    color: var(--semantic-danger-500, #dc362e);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  > p.sub {
+    width: 100%;
+    color: var(--surface-on-surface-var);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.6;
+    > a {
+      color: var(--primary-primary-300);
+    }
+  }
+
+  > div.input-division {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    > div {
+      &:first-child {
+        width: 128px;
+        flex: 128px 0 0;
+        @include mobile {
+          width: 120px;
+          flex: 120px 0 0;
+        }
+      }
+      &:last-child {
+        flex: 1;
+      }
+    }
+  }
+  &.small {
+    > div.input-division {
+      gap: 4px;
+      > div {
+        &:first-child {
+          width: 120px;
+          flex: 120px 0 0;
+        }
+      }
+    }
+  }
+  div.input-area {
+    width: 100%;
+    height: 40px;
+    background: var(--surface-surf-container-low);
+    border: 1px solid var(--surface-surf-container-low);
+    border-radius: 6px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: none;
+    position: relative;
+    gap: 8px;
+    &.active {
+      border: 1px solid var(--surface-outline, #8f9197);
+    }
+    &.error {
+      border: 1px solid var(--Semantic-Danger-500, #dc362e);
+    }
+    .sub-text {
+      color: var(--surface-on-surface-var);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    > button.delete-btn {
+      width: 24px;
+      height: 24px;
+      background-image: var(--ico-close-small-g);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    > button.password-btn {
+      width: 24px;
+      height: 24px;
+      //background-image: var(--ico-close-small-g);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      &.show {
+        background-image: url("/images/common/ico_show.svg");
+      }
+      &.hide {
+        background-image: url("/images/common/ico_hide.svg");
+      }
+    }
+
+    > .file-input-group {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      border: 1px dashed var(--neutral-neutral-600);
+      transition: all 300ms;
+
+      > div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        padding: 0 8px 0 12px;
+        > span {
+          &.image {
+            width: 24px;
+            height: 24px;
+            background-image: url("/images/common/img_image.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.6;
+          }
+          &.name {
+            color: var(--surface-on-surface-var);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            opacity: 0.6;
+          }
+        }
+        > button {
+          width: 24px;
+          height: 24px;
+          margin-left: auto;
+          background-image: url("/images/common/ico_close_g.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 16px;
+        }
+      }
+      &.active {
+        transition: all 300ms;
+        border: 1px solid var(--surface-outline, #8f9197);
+        > div {
+          > span {
+            &.image {
+              opacity: 1;
+            }
+            &.name {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      > input {
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        left: 1;
+        top: 0;
+        z-index: -9999;
+      }
+
+      > label {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        > span {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+          opacity: 0.4;
+          &.plus {
+            width: 24px;
+            height: 24px;
+            display: block;
+            background-image: url("/images/common/ico_plus.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    > .dropdown-box {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 4px);
+      padding: 8px;
+      width: 100%;
+      border-radius: 6px;
+      background: var(--surface-surf-container-high);
+      box-shadow:
+        0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+        0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+
+      z-index: 10;
+      max-height: 270px;
+      overflow-y: scroll;
+      > button {
+        padding: 0px 12px;
+        width: 100%;
+        height: 48px;
+        border-radius: 4px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        > span.ico {
+          width: 24px;
+          height: 24px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        > span.text {
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+          opacity: 0.6;
+          width: 100%;
+          text-transform: capitalize;
+        }
+        &:hover {
+          background: var(--surface-surf-container-highest);
+          span {
+            opacity: 1;
+          }
+        }
+        &.active {
+          span {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    > button.select-btn {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      > span.ico {
+        width: 24px;
+        height: 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      > span.text {
+        color: var(--surface-on-surface-var);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5; /* 150% */
+        opacity: 0.4;
+        text-transform: capitalize;
+        flex: 1;
+        text-align: left;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        &.active {
+          color: var(--surface-on-surface);
+          opacity: 1;
+        }
+      }
+      > img {
+        transform: rotate(0deg);
+        margin-left: auto;
+      }
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    input[type="checkbox"] + label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      gap: 8px;
+      > span {
+        color: var(--surface-on-surface-var);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        // border: 3px solid #707070;
+        position: relative;
+        background-image: url("/images/common/ico_checkbox.webp");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+    input[type="checkbox"]:checked + label {
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        // border: 3px solid #707070;
+        position: relative;
+        background-image: url("/images/common/ico_checkbox_a.webp");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 0%; /* 시작 지점 좌표 */
+      }
+      50% {
+        background-position: 100% 100%; /* 끝 지점 좌표 */
+      }
+      100% {
+        background-position: 0% 0%; /* 시작 지점 좌표 */
+      }
+    }
+    .skeleton {
+      flex: 1;
+      height: 16px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      > div {
+        width: 30%;
+        background-color: red;
+        height: 100%;
+        min-width: 100px;
+        background: linear-gradient(
+          to bottom right,
+          #24282c,
+          #161b21
+        ); /* 그라데이션 색상 설정 */
+        background-size: 200% 200%; /* 그라데이션 크기를 200%로 설정 */
+        animation: gradientAnimation 1.5s linear infinite; /* 5초 동안 linear한 방식으로 무한 반복하는 애니메이션 설정 */
+      }
+    }
+    > input[type="text"],
+    input[type="password"] {
+      // width: 100%;
+      flex: 1;
+
+      color: var(--surface-on-surface);
+      caret: var(--surface-on-surface);
+      width: 1px;
+      font-size: 14px;
+      font-weight: 400;
+
+      @include mobile {
+        font-size: 16px;
+      }
+
+      &::placeholder {
+        opacity: 0.4;
+        color: var(--surface-on-surface-var);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.5;
+        @include mobile {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .error-box {
+    position: absolute;
+    top: calc(100% + 4px);
+    color: var(--Semantic-Danger-500, #dc362e);
+
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    right: 0;
+    text-align: right;
+    &.left {
+      left: 0;
+      text-align: left;
+    }
+  }
+
+  .error-list-box {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 12px;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+    z-index: 500;
+    @include mobile {
+      position: relative;
+      top: auto;
+      right: auto;
+    }
+    > .content {
+      min-width: 220px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      flex-direction: column;
+      position: relative;
+      border-radius: 8px;
+      background: var(--surface-inverse-surface);
+      gap: 4px;
+      @include mobile {
+        min-width: auto;
+        padding: 0;
+        background: none;
+        margin-top: 6px;
+      }
+      > p {
+        color: var(--surface-inverse-on-surface);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.5;
+        @include mobile {
+          display: none;
+        }
+      }
+      > .check-row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        @include mobile {
+          gap: 4px;
+        }
+        &::before {
+          content: "";
+          display: block;
+          width: 16px;
+          height: 16px;
+          background-image: url("/images/common/ico_check_r.svg");
+          background-size: cover;
+          opacity: 0.2;
+        }
+        &.checked {
+          &::before {
+            content: "";
+            display: block;
+            width: 16px;
+            height: 16px;
+            background-image: url("/images/common/ico_check_r.svg");
+            background-size: cover;
+            opacity: 1;
+          }
+        }
+        > p {
+          color: var(--surface-inverse-on-surface);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+          @include mobile {
+            color: var(--surface-on-surface);
+          }
+        }
+      }
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -6px;
+        right: 16px;
+        width: 25px;
+        height: 14px;
+        background-image: url("/images/common/ico_polygon.svg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center top;
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.version-toggle-box {
+  border-radius: 8px;
+  //background: var(--Surface-Surf-Container-Lowest, #0d0f13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--Surface-Outline-Var, #45464b);
+  overflow: hidden;
+  @include mobile {
+    width: 100%;
+    margin-left: 0;
+    //height: 38px;
+  }
+  * {
+    transition: none;
+  }
+  > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 90px;
+    height: 40px;
+    @include mobile {
+      width: auto;
+      flex: 1;
+      height: 49px;
+    }
+
+    > span {
+      text-align: center;
+      font-size: 12px;
+      color: var(--surface-on-surface);
+      font-weight: 400;
+      line-height: 1.5;
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+    &.casino {
+      &::before {
+        content: "";
+        background-image: url("/images/header/ico_casino.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 16px;
+        height: 16px;
+        //@include mobile {
+        //  position: absolute;
+        //  right: 3px;
+        //  top: 50%;
+        //  transform: translateY(-50%);
+        //}
+      }
+      border-right: 1px solid var(--Surface-Outline-Var, #45464b);
+    }
+    &.sports {
+      &::before {
+        content: "";
+        background-image: url("/images/header/ico_sports.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &.active {
+      background: var(--Surface-Surf-Container-Lowest, #0d0f13);
+      @include mobile {
+        justify-content: center;
+        position: relative;
+      }
+      > span {
+        color: var(--surface-on-signature-surface);
+        font-weight: 500;
+      }
+      &.casino {
+        &::before {
+          content: "";
+          background-image: url("/images/header/ico_casino_a.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          width: 16px;
+          height: 16px;
+        }
+      }
+      &.sports {
+        &::before {
+          content: "";
+          background-image: url("/images/header/ico_sports_a.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}

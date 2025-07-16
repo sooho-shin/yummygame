@@ -1,0 +1,172 @@
+@import "@/styles/_mixin.scss";
+@import "@/styles/_mixin.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  // display: flex;
+  // align-content: center;
+  // justify-content: center;
+  // flex-direction: column;
+  // overflow: hidden;
+}
+
+* {
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    sans-serif;
+  transition:
+    background-color 500ms,
+    background 500ms;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+*::selection {
+  background-color: #db2d59; /* 원하는 배경색 */
+  color: #fff; /* 원하는 텍스트 색 */
+}
+button,
+a {
+  &:disabled {
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: none;
+  }
+}
+
+main {
+  // padding-left: 260px;
+  // height: 100dvh;
+  position: relative;
+  // overflow-x: hidden;
+  // flex: 1;
+  // display: flex;
+  // align-items: flex-start;
+  // justify-content: flex-start;
+  // min-height: 100dvh;
+  // padding-left: 260px;
+  // overflow: hidden;
+}
+
+.Toastify__close-button {
+  width: 40px;
+  height: 40px;
+  background-image: url("/images/common/ico_toast_close.svg") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  opacity: 1 !important;
+  * {
+    display: none !important;
+  }
+}
+
+.Toastify__toast-body {
+  p,
+  pre {
+    color: var(--surface-inverse-on-surface);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 8px;
+  > span {
+    color: var(--surface-on-surface-var);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    // border: 3px solid #707070;
+    position: relative;
+    background-image: url("/images/common/ico_checkbox.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+input[type="checkbox"]:checked + label {
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    // border: 3px solid #707070;
+    position: relative;
+    background-image: url("/images/common/ico_checkbox_a.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+#fc_frame {
+  transition: all 300ms;
+  //opacity: 0 !important;
+  //width: 1px !important;
+  //height: 1px !important;
+  //left: 0 !important;
+  //top: 0 !important;
+  @include mobile {
+    transition: none;
+    opacity: 0 !important;
+    transform: scale(0) !important;
+    z-index: -2000 !important;
+    display: none;
+  }
+  &.fc-open {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    z-index: 9999 !important;
+    display: block;
+  }
+  .d-hotline.h-btn {
+    display: none !important;
+  }
+}
+
+.d-hotline.h-btn {
+  display: none !important;
+}

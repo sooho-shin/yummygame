@@ -1,0 +1,367 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+// 임시 시작
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+
+  .game-wrapper {
+    width: 100%;
+    // height: 504px;
+    padding: 60px 40px 36px 40px;
+    background-image: url("/images/game/limbo/img_limbo_bg.webp");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    @include mobile {
+      padding: 16px;
+    }
+
+    .bread-comp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      top: 16px;
+      left: 40px;
+      position: absolute;
+
+      span {
+        padding: 8px;
+
+        &:nth-child(1) {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        &:nth-child(2) {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+          padding: 0;
+        }
+
+        &:nth-child(3) {
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+      }
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .result-container {
+      width: 100%;
+      max-width: 678px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 auto;
+
+      .result-row {
+        border-radius: 8px;
+        background: rgba(13, 36, 49, 0.2);
+        backdrop-filter: blur(2px);
+        width: 100%;
+        // height: 37px;
+        padding: 8px 4px;
+
+        overflow: hidden;
+
+        .not-login-row {
+          width: 100%;
+          text-align: center;
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.6;
+          height: 21px;
+        }
+
+        @keyframes transform {
+          0% {
+            transform: translateX(54px);
+          }
+          100% {
+            transform: translateX(0px);
+          }
+        }
+
+        .coin-row {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          // padding: 0 4px;
+          gap: 4px;
+          transform: translateX(0px);
+
+          &.ani {
+            animation: transform 100ms linear alternate;
+          }
+
+          div {
+            transition: none;
+            // width: 54px;
+            padding: 0 8px;
+            height: 29px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background: var(--neutral-variants-nv-700);
+            @include mobile {
+              height: auto;
+              border-radius: 4px;
+              padding: 0 4px;
+            }
+
+            > span {
+              color: var(--surface-on-surface-var);
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 1.5;
+              opacity: 0.6;
+              @include mobile {
+                font-size: 12px;
+              }
+            }
+
+            &.win {
+              background: #c3495c;
+
+              > span {
+                color: var(--surface-on-surface);
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
+      .limbo-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 20px;
+        overflow: hidden;
+
+        .phaser-wrapper {
+          position: relative;
+          width: 100%;
+          height: 410px;
+          @include mobile {
+            height: 265px;
+          }
+
+          > .loading-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+
+            > .loading-container {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .loader {
+                width: 48px;
+                height: 48px;
+                border: 5px solid #fff;
+                border-bottom-color: transparent;
+                border-radius: 50%;
+                display: inline-block;
+                box-sizing: border-box;
+                animation: rotation 1s linear infinite;
+              }
+
+              @keyframes rotation {
+                0% {
+                  transform: rotate(0deg);
+                }
+                100% {
+                  transform: rotate(360deg);
+                }
+              }
+            }
+          }
+        }
+        .phaser-wrapper + .phaser-wrapper {
+          display: none;
+        }
+
+        div.result-number {
+          color: var(--surface-on-surface);
+          font-family: Poppins;
+          font-size: 64px;
+          font-weight: 700;
+          line-height: 1.2;
+          margin-bottom: 8px;
+          position: relative;
+          width: 100%;
+          text-align: center;
+          @include mobile {
+            font-size: 40px;
+          }
+
+          &.win {
+            color: #e2577a;
+          }
+
+          &.lose {
+            color: #249bab;
+          }
+
+          transition: color 500ms;
+
+          > canvas {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            z-index: 10;
+          }
+        }
+
+        .img-relative {
+          position: relative;
+          height: 318px;
+          @include mobile {
+            height: 202px;
+          }
+
+          .img-group {
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translate(-50%, -100%);
+            @include mobile {
+              top: 100%;
+            }
+
+            &.active {
+              top: 0;
+              transition: top 500ms;
+            }
+
+            > div {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              position: relative;
+
+              width: 110px;
+              padding-bottom: 84px;
+
+              @include mobile {
+                width: 70px;
+                padding-bottom: 52px;
+              }
+
+              > .img-rocket {
+                width: 95%;
+                position: relative;
+                z-index: 10;
+              }
+
+              > .img-cloud {
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                z-index: 5;
+              }
+            }
+          }
+        }
+
+        .bet-info-box {
+          width: 100%;
+          max-width: 678px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+
+          > .input-group {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 12px;
+
+            > span.title {
+              color: var(--surface-on-surface);
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 1.5;
+              opacity: 0.6;
+            }
+
+            > .input-box {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 8px 12px;
+              border-radius: 6px;
+              border: 1px solid var(--Surface-Outline-Var, #45464b);
+              background-color: var(--Surface-Surf-Container-Lowest, #0d0f13);
+
+              > input {
+                flex: 1;
+                color: var(--surface-on-surface);
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.5;
+                width: 1px;
+              }
+
+              > span {
+                color: var(--surface-on-surface);
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+
+        // > img.rocket {
+
+        // }
+      }
+    }
+  }
+}

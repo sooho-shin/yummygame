@@ -1,0 +1,190 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.trend-modal {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  > .top {
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > span {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+  > .content {
+    width: 100%;
+    padding: 16px 24px;
+    max-height: calc(100dvh - 200px);
+    overflow-y: scroll;
+    .roadmap-row {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 16px;
+      padding: 16px 0;
+
+      > .roadmap-content {
+        width: 130px;
+
+        //background-color: var(--surface-surf-container-low);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2px;
+
+        @include mobile {
+          width: 124px;
+          height: 124px;
+        }
+        > div {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: column;
+          height: 100%;
+          gap: 2px;
+          > div {
+            border-radius: 6px;
+            background: var(--Surface-Surface-Bright, #36393d);
+            width: 100%;
+            aspect-ratio: 1/1;
+            padding: 4px;
+            > .ball {
+              width: 100%;
+              height: 100%;
+              border-radius: 100%;
+              //10배이상
+              &.pink {
+                background-color: #e547c3;
+              }
+              //2배이상
+              &.blue {
+                background-color: #249bab;
+              }
+              //2배이하
+              &.purple {
+                background-color: #676ba6;
+              }
+            }
+          }
+        }
+      }
+
+      > .info-text-group {
+        flex: 1;
+        border-radius: 8px;
+        background: var(--Surface-Surface-Bright, #36393d);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
+        > p {
+          color: var(--surface-on-surface);
+          text-align: center;
+          font-size: 14px;
+          line-height: 1.5;
+          text-align: left;
+          padding: 4px 8px 0 8px;
+          @include mobile {
+            font-size: 12px;
+          }
+        }
+        .step-container {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          gap: 4px;
+          padding: 0 8px 4px 8px;
+
+          > .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            > span.text {
+              font-size: 14px;
+              line-height: 1.5;
+              @include mobile {
+                font-size: 12px;
+              }
+
+              //10배이상
+              &.pink {
+                color: #e547c3;
+              }
+              //2배이상
+              &.blue {
+                color: #249bab;
+              }
+              //2배이하
+              &.purple {
+                color: #676ba6;
+              }
+            }
+
+            > span.arrow {
+              color: var(--surface-on-surface);
+              text-align: center;
+
+              /* Yum/Body/Small */
+              font-family: Pretendard;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 18px; /* 150% */
+            }
+          }
+        }
+      }
+    }
+    > .info-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      > .info-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        > .ball {
+          width: 12px;
+          height: 12px;
+          border-radius: 100%;
+          //10배이상
+          &.pink {
+            background-color: #e547c3;
+          }
+          //2배이상
+          &.blue {
+            background-color: #249bab;
+          }
+          //2배이하
+          &.purple {
+            background-color: #676ba6;
+          }
+        }
+        > span {
+          color: var(--surface-on-surface);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}

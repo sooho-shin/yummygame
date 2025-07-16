@@ -1,0 +1,968 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.betting-container {
+  padding: 0px 40px;
+  padding-bottom: 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 100;
+
+  @include mobile {
+    padding: 0 16px;
+  }
+
+  * {
+    transition: none;
+  }
+
+  .setting-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 0;
+    margin-bottom: 16px;
+
+    &.wheel-mobile {
+      margin-bottom: 8px;
+    }
+
+    .autobet-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .btn-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-right: auto;
+        > span {
+          margin-left: 8px;
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+        .btn-tooltip {
+          width: 16px;
+          height: 16px;
+          margin-left: 4px;
+          background-image: url("/images/common/ico_tooltip_w.svg");
+          background-position: center;
+          background-size: cover;
+        }
+      }
+      .btn-box + .btn-box {
+        margin-left: 16px;
+      }
+    }
+
+    .setting-btn-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-left: auto;
+      .setting-group {
+        position: relative;
+        font-size: 0;
+        > button {
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+          transition: all 300ms;
+          position: relative;
+          background-image: url(/images/nav/setting.svg);
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+          &:hover {
+            background-image: url(/images/nav/setting_a.svg);
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+        }
+        .setting-box {
+          border-radius: 8px;
+          width: 196px;
+          padding: 4px;
+          background: var(--Surface-Surf-Container, #1e2228);
+          position: absolute;
+          display: flex;
+          bottom: calc(100% + 4px);
+          right: 0;
+          // display: none;
+          justify-content: flex-end;
+          flex-direction: column;
+          > button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            padding: 8px;
+            > div.info-text {
+              color: var(--surface-on-surface);
+
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 1.5;
+            }
+            &:hover {
+              background: var(--Surface-Surf-Container-High, #282e35);
+              > div.info-text {
+                color: var(--surface-on-surface);
+              }
+            }
+
+            &.music {
+              &::before {
+                background-image: url("/images/common/ico_music_g.svg");
+                background-position: center;
+                background-size: 24px;
+                background-repeat: no-repeat;
+                content: "";
+                width: 24px;
+                height: 24px;
+                display: block;
+              }
+
+              &:hover {
+                &::before {
+                  background-image: url("/images/common/ico_music_w.svg");
+                  background-position: center;
+                  background-size: 24px;
+                  background-repeat: no-repeat;
+                  content: "";
+                  width: 24px;
+                  height: 24px;
+                  display: block;
+                }
+              }
+
+              &.active {
+                &::before {
+                  background-image: url("/images/common/ico_music_a_g.svg");
+                  background-position: center;
+                  background-size: 24px;
+                  background-repeat: no-repeat;
+                  content: "";
+                  width: 24px;
+                  height: 24px;
+                  display: block;
+                }
+              }
+            }
+            &.sound {
+              &::before {
+                background-image: url("/images/common/ico_sound_g.svg");
+                background-position: center;
+                background-size: 24px;
+                background-repeat: no-repeat;
+                content: "";
+                width: 24px;
+                height: 24px;
+                display: block;
+              }
+
+              &:hover {
+                &::before {
+                  background-image: url("/images/common/ico_sound_w.svg");
+                  background-position: center;
+                  background-size: 24px;
+                  background-repeat: no-repeat;
+                  content: "";
+                  width: 24px;
+                  height: 24px;
+                  display: block;
+                }
+              }
+
+              &.active {
+                &::before {
+                  background-image: url("/images/common/ico_sound_a_g.svg");
+                  background-position: center;
+                  background-size: 24px;
+                  background-repeat: no-repeat;
+                  content: "";
+                  width: 24px;
+                  height: 24px;
+                  display: block;
+                }
+              }
+            }
+            &.ani {
+              &::before {
+                background-image: url("/images/common/ico_ani_g.svg");
+                background-position: center;
+                background-size: 24px;
+                background-repeat: no-repeat;
+                content: "";
+                width: 24px;
+                height: 24px;
+                display: block;
+              }
+
+              &:hover {
+                &::before {
+                  background-image: url("/images/common/ico_ani_w.svg");
+                  background-position: center;
+                  background-size: 24px;
+                  background-repeat: no-repeat;
+                  content: "";
+                  width: 24px;
+                  height: 24px;
+                  display: block;
+                }
+              }
+
+              &.active {
+                &::before {
+                  background-image: url("/images/common/ico_ani_a_g.svg");
+                  background-position: center;
+                  background-size: 24px;
+                  background-repeat: no-repeat;
+                  content: "";
+                  width: 24px;
+                  height: 24px;
+                  display: block;
+                }
+
+                // &:hover {
+                //   background-image: url("/images/common/ico_sound_a_w.svg");
+                //   background-position: center;
+                //   background-size: 24px;
+                //   background-repeat: no-repeat;
+                // }
+              }
+            }
+            &.tooltip {
+              &::before {
+                background-image: url("/images/common/ico_tooltip_g.svg");
+                background-position: center;
+                background-size: 24px;
+                background-repeat: no-repeat;
+                content: "";
+                width: 24px;
+                height: 24px;
+                display: block;
+              }
+
+              &:hover {
+                &::before {
+                  background-image: url("/images/common/ico_tooltip_w.svg");
+                  background-position: center;
+                  background-size: 24px;
+                  background-repeat: no-repeat;
+                  content: "";
+                  width: 24px;
+                  height: 24px;
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+      > button,
+      a {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        transition: all 300ms;
+        position: relative;
+        // background-image: url(/images/nav/setting_a.svg);
+        > .info-text {
+          position: absolute;
+          left: 0;
+          bottom: calc(100% + 4px);
+          padding: 4px 8px;
+          border-radius: 4px;
+          background: var(--Surface-Surf-Container-Highest, #2f363f);
+          color: var(--surface-on-surface);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: 0.24px;
+          display: none;
+          word-break: keep-all;
+        }
+        &:hover {
+          > .info-text {
+            display: block;
+          }
+        }
+        &.favorite {
+          background-image: url("/images/common/ico_favorite_g.svg");
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+
+          &:hover {
+            background-image: url("/images/common/ico_favorite_w.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+
+          &.active {
+            background-image: url("/images/common/ico_favorite_a_g.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+
+            &:hover {
+              background-image: url("/images/common/ico_favorite_a_w.svg");
+              background-position: center;
+              background-size: 24px;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+        &.music {
+          background-image: url("/images/common/ico_music_g.svg");
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+
+          &:hover {
+            background-image: url("/images/common/ico_music_w.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+
+          &.active {
+            background-image: url("/images/common/ico_music_a_g.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+
+            // &:hover {
+            //   background-image: url("/images/common/ico_music_a_w.svg");
+            //   background-position: center;
+            //   background-size: 24px;
+            //   background-repeat: no-repeat;
+            // }
+          }
+        }
+        &.sound {
+          background-image: url("/images/common/ico_sound_g.svg");
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+
+          &:hover {
+            background-image: url("/images/common/ico_sound_w.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+
+          &.active {
+            background-image: url("/images/common/ico_sound_a_g.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+
+            // &:hover {
+            //   background-image: url("/images/common/ico_sound_a_w.svg");
+            //   background-position: center;
+            //   background-size: 24px;
+            //   background-repeat: no-repeat;
+            // }
+          }
+        }
+        &.ani {
+          background-image: url("/images/common/ico_ani_g.svg");
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+
+          &:hover {
+            background-image: url("/images/common/ico_ani_w.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+
+          &.active {
+            background-image: url("/images/common/ico_ani_a_g.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+        }
+        &.fair {
+          background-image: url("/images/common/ico_fair_g.svg");
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+
+          &:hover {
+            background-image: url("/images/common/ico_fair_w.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+        }
+        &.statistics {
+          background-image: url("/images/common/ico_statistics_g.svg");
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+
+          &:hover {
+            background-image: url("/images/common/ico_statistics_w.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+
+          &.active {
+            background-image: url("/images/common/ico_statistics_a.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+        }
+        &.tooltip {
+          background-image: url("/images/common/ico_tooltip_g.svg");
+          background-position: center;
+          background-size: 24px;
+          background-repeat: no-repeat;
+
+          &:hover {
+            background-image: url("/images/common/ico_tooltip_w.svg");
+            background-position: center;
+            background-size: 24px;
+            background-repeat: no-repeat;
+          }
+        }
+        &:hover {
+          background: var(--surface-surf-container);
+        }
+        &::after {
+          display: block;
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          width: 1px;
+          height: 1px;
+          opacity: 0;
+          overflow: hidden;
+
+          content: url("/images/common/ico_favorite_w.svg")
+            url("/images/common/ico_tooltip_w.svg")
+            url("/images/common/ico_fair_w.svg")
+            url("/images/common/ico_music_a_w.svg")
+            url("/images/common/ico_music_w.svg")
+            url("/images/common/ico_sound_w.svg")
+            url("/images/common/ico_sound_a_w.svg")
+            url("/images/common/ico_favorite_w.svg")
+            url("/images/common/ico_favorite_a_w.svg")
+            url("/images/common/ico_statistics_g.svg")
+            url("/images/common/ico_statistics_w.svg")
+            url("/images/common/ico_statistics_a.svg");
+        }
+      }
+    }
+
+    @include tablet {
+      &.crash {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+    }
+
+    @include desktop {
+      &.crash {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+    }
+    @include mobile {
+      &.crash {
+        position: relative;
+        .autobet-box {
+          width: 100%;
+          justify-content: space-between;
+          .btn-box {
+            margin-right: 0;
+          }
+        }
+        .setting-btn-box {
+          position: absolute;
+          right: 0;
+          bottom: calc(100% + 4px);
+        }
+      }
+    }
+  }
+  .betting-row {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @include desktop {
+      &.tablet {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        > div {
+          flex: none !important;
+          width: 100% !important;
+          &:nth-child(1) {
+            order: 2;
+          }
+          &:nth-child(2) {
+            order: 3;
+          }
+          &:nth-child(3) {
+            order: 1;
+          }
+        }
+        &.limbo {
+          > div {
+            &:nth-child(1) {
+              order: 2;
+            }
+            &:nth-child(2) {
+              order: 1;
+            }
+          }
+        }
+      }
+    }
+
+    > div {
+      flex: 1 1 0px;
+      width: 0;
+      &.limbo-bet-btn {
+        width: 350px;
+        flex: none;
+      }
+      @include tablet {
+        flex: none !important;
+        width: 100% !important;
+        &:nth-child(1) {
+          order: 2;
+        }
+        &:nth-child(2) {
+          order: 3;
+        }
+        &:nth-child(3) {
+          order: 1;
+        }
+      }
+    }
+    &.limbo {
+      > div {
+        @include tablet {
+          &:nth-child(1) {
+            order: 2;
+          }
+          &:nth-child(2) {
+            order: 1;
+          }
+        }
+      }
+    }
+
+    .bet-box {
+      display: flex;
+      flex-direction: column;
+      .top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 4px;
+        p {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          span {
+            color: var(--surface-on-surface-var);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+          }
+          .btn-tooltip {
+            width: 16px;
+            height: 16px;
+            margin-left: 4px;
+            background-image: url("/images/common/ico_tooltip_g.svg");
+            background-position: center;
+            background-size: cover;
+          }
+        }
+      }
+      .btn-row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 8px;
+
+        > button {
+          flex: 1;
+          height: 30px;
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+          border-radius: 8px;
+          background: var(--surface-surf-container-high);
+        }
+      }
+    }
+    .choice-box {
+      display: flex;
+      flex-direction: column;
+      .top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 4px;
+        p {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          span {
+            color: var(--surface-on-surface-var);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+          }
+          .btn-tooltip {
+            width: 16px;
+            height: 16px;
+            margin-left: 4px;
+            background-image: url("/images/common/ico_tooltip_g.svg");
+            background-position: center;
+            background-size: cover;
+          }
+        }
+      }
+      .btn-row {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        > button {
+          border-radius: 8px;
+          opacity: 0.6;
+          background: var(--surface-surf-container);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          // flex-direction: column;
+          flex: 1;
+          height: 100%;
+          border: 1px solid var(--surface-surf-container);
+          &.active {
+            opacity: 1;
+          }
+          > span {
+            color: var(--surface-on-surface);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+          }
+
+          &:first-child {
+            &::before {
+              content: "";
+              background-image: url("/images/game/flip/img_coin_head.webp");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              display: block;
+              width: 32px;
+              height: 32px;
+            }
+            &.active {
+              border: 1px solid #e3c839;
+            }
+          }
+          &:last-child {
+            &::before {
+              content: "";
+              background-image: url("/images/game/flip/img_coin_tail.webp");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              display: block;
+              width: 32px;
+              height: 32px;
+            }
+            &.active {
+              border: 1px solid #21afff;
+            }
+          }
+        }
+      }
+    }
+    .bet-btn {
+      height: 100%;
+      border-radius: 8px;
+
+      @include tablet {
+        height: 48px;
+      }
+      @include desktop {
+        &.tablet {
+          height: 48px;
+        }
+      }
+    }
+  }
+
+  .autobet-row {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 24px;
+    @include tablet {
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @include desktop {
+      &.tablet {
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 16px;
+      }
+    }
+
+    > div {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      .top {
+        width: 100%;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--surface-outline-var);
+        opacity: 0.6;
+        > span {
+          color: var(--surface-on-surface-var);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+      }
+      > .input-box-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        @include tablet {
+          flex-direction: row;
+          gap: 24px;
+          > div {
+            width: auto;
+            flex: 1;
+          }
+        }
+        @include desktop {
+          &.tablet {
+            flex-direction: row;
+            gap: 24px;
+            > div {
+              width: auto;
+              flex: 1;
+            }
+          }
+        }
+
+        @include mobile {
+          flex-direction: column;
+          gap: 8px;
+          > div {
+            width: 100%;
+            flex: 1;
+          }
+        }
+      }
+
+      .number-bet-btn {
+        border-radius: 4px;
+        background: rgba(227, 227, 229, 0.12);
+        // padding: 8px;
+        width: 48px;
+        height: 32px;
+        cursor: default;
+        > span {
+          color: var(--gray-gray-2);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+          opacity: 0.4;
+        }
+        &.active {
+          background: #116f32;
+          > span {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    // .increase-box {
+    // }
+  }
+}
+
+.wheel-betting-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  @include mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 5개의 열을 동일한 너비로 설정 */
+    gap: 16px;
+  }
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+    > button {
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 8px;
+      width: 100%;
+      height: 56px;
+      > span {
+        &:nth-child(1) {
+          color: var(--surface-on-surface);
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.5;
+        }
+        &:nth-child(2) {
+          color: var(--surface-on-surface);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+          opacity: 0.6;
+        }
+      }
+    }
+
+    &:nth-child(1) {
+      > button {
+        background: #5b5d7a;
+      }
+    }
+    &:nth-child(2) {
+      > button {
+        background: #d3256e;
+      }
+    }
+    &:nth-child(3) {
+      > button {
+        background: #1983bf;
+      }
+    }
+    &:nth-child(4) {
+      > button {
+        background: #c58019;
+      }
+    }
+  }
+}
+
+.wheel-autobet-option {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--surface-surf-container-lowest);
+  margin-left: 24px;
+  @include tablet {
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  @include desktop {
+    &.tablet {
+      margin-left: 0;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+
+  > button {
+    width: 80px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    border-radius: 6px;
+    padding: 0 8px;
+    flex: 1;
+    &::before {
+      content: "";
+      width: 24px;
+      height: 24px;
+      background-image: url("/images/common/ico_radio.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    > span {
+      color: var(--surface-on-surface-var);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    &.active {
+      &::before {
+        content: "";
+        width: 24px;
+        height: 24px;
+        background-image: url("/images/common/ico_radio_a.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      background: var(--semantic-success-900);
+    }
+  }
+}

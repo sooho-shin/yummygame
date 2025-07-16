@@ -1,0 +1,121 @@
+// color
+
+body[data-theme="dark"] {
+  --theme-color: #000;
+  --surface-surface: #13161b;
+  --surface-surf-container-low: #161b21;
+  --surface-surf-container: #1e2228;
+  --surface-surface-dim: #13161b;
+  --surface-on-surface-var: #a2aab5;
+  --surface-on-surface: #fff;
+  --neutral-neutral-300: #838e9d;
+  --neutral-neutral-600: #3c444f;
+  --surface-surf-container-high: #282e35;
+  --secondary-secondary-500: #39c3ff;
+  --surface-signature-surface: #db2d59;
+  --surface-surf-container-lowest: #0d0f13;
+  --surface-inverse-surface: #e0e3e6;
+  --surface-inverse-on-surface: #232326;
+  --surface-outline: #8f9197;
+  --primary-primary-300: #e9819b;
+  --semantic-danger-500: #dc362e;
+  --surface-on-signature-surface: #fbeaee;
+  --primary-primary-900: #420e1b;
+  --semantic-success-500: #1db954;
+  --surface-outline-var: #45464b;
+  --gray-gray-2: #c9cfd0;
+  --semantic-success-800: #0c4a22;
+  --neutral-variants-nv-700: #2e2f32;
+  --semantic-success-700: #116f32;
+  --neutral-neutral-700: #282e35;
+  --surface-surf-container-highest: #2f363f;
+  --semantic-success-900: #062511;
+  --semantic-warning-400: #ffee61;
+}
+
+body[data-theme="light"] {
+  --theme-color: #fff;
+  --surface-surface: #fff;
+  --surface-surf-container-low: #f3f6f9;
+  --surface-surf-container: #1e2228;
+  --surface-surface-dim: #dadcde;
+  --surface-on-surface-var: #a2aab5;
+  --surface-on-surface: #e3e3e5;
+  --neutral-neutral-300: #838e9d;
+  --neutral-neutral-600: #3c444f;
+  --surface-surf-container-high: #282e35;
+  --secondary-secondary-500: #39c3ff;
+  --surface-signature-surface: #db2d59;
+  --surface-surf-container-lowest: #0d0f13;
+  --surface-inverse-surface: #e0e3e6;
+  --surface-inverse-on-surface: #232326;
+  --surface-outline: #8f9197;
+  --primary-primary-300: #e9819b;
+  --semantic-danger-500: #dc362e;
+  --surface-on-signature-surface: #fbeaee;
+  --primary-primary-900: #420e1b;
+  --semantic-success-500: #1db954;
+  --surface-outline-var: #45464b;
+  --gray-gray-2: #c9cfd0;
+  --semantic-success-800: #0c4a22;
+  --neutral-variants-nv-700: #2e2f32;
+  --semantic-success-700: #116f32;
+  --neutral-neutral-700: #282e35;
+  --surface-surf-container-highest: #2f363f;
+  --semantic-success-900: #062511;
+}
+
+// image
+
+body[data-theme="dark"] {
+  --img-token-eth: url("/images/tokens/img_token_eth.svg");
+  --img-token-btc: url("/images/tokens/img_token_btc.svg");
+  --img-token-bnb: url("/images/tokens/img_token_bnb.svg");
+  --img-token-usdt: url("/images/tokens/img_token_usdt.svg");
+  --img-token-jel: url("/images/tokens/img_token_jel.svg");
+  --img-token-hon: url("/images/tokens/img_token_hon.svg");
+  --img-token-xrp: url("/images/tokens/img_token_xrp.svg");
+  --img-token-usdc: url("/images/tokens/img_token_usdc.svg");
+
+  --img-token-eth-circle: url("/images/tokens/img_token_eth_circle.svg");
+  --img-token-btc-circle: url("/images/tokens/img_token_btc_circle.svg");
+  --img-token-bnb-circle: url("/images/tokens/img_token_bnb_circle.svg");
+  --img-token-usdt-circle: url("/images/tokens/img_token_usdt_circle.svg");
+  --img-token-jel-circle: url("/images/tokens/img_token_jel_circle.svg");
+  --img-token-hon-circle: url("/images/tokens/img_token_xrp_circle.svg");
+
+  --ico-arrow: url("/images/common/ico_arrow_g.svg");
+  --ico-arrow-big: url("/images/common/ico_arrow_big_g.svg");
+  --ico-wallet: url("/images/common/ico_wallet_w.svg");
+  --ico-setting: url("/images/common/ico_setting_g.svg");
+  --ico-moon-g: url("/images/nav/ico_moon_g.svg");
+  --ico-moon-w: url("/images/nav/ico_moon_g.svg");
+  --ico-close-g: url("/images/common/ico_close_g.svg");
+  --ico-close-small-g: url("/images/common/ico_close_small_g.svg");
+}
+
+body[data-theme="light"] {
+  --img-token-eth: url("/images/tokens/img_token_eth.svg");
+  --img-token-btc: url("/images/tokens/img_token_btc.svg");
+  --img-token-bnb: url("/images/tokens/img_token_bnb.svg");
+  --img-token-usdt: url("/images/tokens/img_token_usdt.svg");
+  --img-token-jel: url("/images/tokens/img_token_jel.svg");
+  --img-token-hon: url("/images/tokens/img_token_xrp.svg");
+  --img-token-usdc: url("/images/tokens/img_token_usdc.svg");
+
+  --img-token-eth-circle: url("/images/tokens/img_token_eth_circle.svg");
+  --img-token-btc-circle: url("/images/tokens/img_token_btc_circle.svg");
+  --img-token-bnb-circle: url("/images/tokens/img_token_bnb_circle.svg");
+  --img-token-usdt-circle: url("/images/tokens/img_token_usdt_circle.svg");
+  --img-token-jel-circle: url("/images/tokens/img_token_jel_circle.svg");
+  --img-token-hon-circle: url("/images/tokens/img_token_xrp_circle.svg");
+
+  --ico-arrow: url("/images/common/ico_arrow_g.svg");
+  --ico-arrow-big: url("/images/common/ico_arrow_big_g.svg");
+  --ico-wallet: url("/images/common/ico_wallet_w.svg");
+  --ico-setting: url("/images/common/ico_setting_g.svg");
+  --ico-moon-g: url("/images/nav/ico_moon_g.svg");
+  --ico-moon-w: url("/images/nav/ico_moon_g.svg");
+  --ico-close-g: url("/images/common/ico_close_g.svg");
+  --ico-close-small-g: url("/images/common/ico_close_small_g.svg");
+}

@@ -1,0 +1,39 @@
+@import "@/styles/_variables.scss";
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin notMobile {
+  @media (min-width: #{$breakpoint-mobile + 1}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin middle {
+  @media (max-width: #{$breakpoint-middle}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-tablet + 1}) {
+    @content;
+  }
+}
+
+// @import "../../Styles/mixins";
+
+// @include mobile {
+//   .img-card {
+//     width: 100px;
+//   }
+// }

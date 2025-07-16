@@ -1,0 +1,400 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+// 임시 시작
+.betting-table {
+  width: 100%;
+  aspect-ratio: 15 / 6;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(14, 1fr);
+  gap: 4px;
+  padding: 8px;
+  background: #1e0c29;
+  border-radius: 8px;
+  @include mobile {
+    aspect-ratio: 1 / 1.75;
+    grid-template-rows: repeat(14, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0;
+  }
+
+  button,
+  span {
+    border-radius: 8px;
+    color: var(--surface-on-surface);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    @include mobile {
+      font-size: 12px;
+      border-radius: 6px;
+    }
+  }
+
+  .btn-content {
+    width: 100%;
+    height: 100%;
+    // background-color: blue;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span.chip-amount {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-shadow:
+        0px 1px 2px rgba(0, 0, 0, 0.3),
+        0px 1px 3px rgba(0, 0, 0, 0.15);
+      font-family: Poppins;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 100;
+    }
+    > span.coin {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      z-index: 10;
+      transition: none;
+
+      &.second {
+        top: 55%;
+        z-index: 5;
+      }
+
+      &.coin-1 {
+        background-image: url("/images/game/roulette/img_chip_1.webp");
+      }
+      &.coin-10 {
+        background-image: url("/images/game/roulette/img_chip_10.webp");
+      }
+      &.coin-100 {
+        background-image: url("/images/game/roulette/img_chip_100.webp");
+      }
+      &.coin-1000 {
+        background-image: url("/images/game/roulette/img_chip_1000.webp");
+      }
+      &.coin-10000 {
+        background-image: url("/images/game/roulette/img_chip_10000.webp");
+      }
+      &.coin-100000 {
+        background-image: url("/images/game/roulette/img_chip_100000.webp");
+      }
+      &.coin-1000000 {
+        background-image: url("/images/game/roulette/img_chip_1000000.webp");
+      }
+    }
+  }
+
+  .zero-btn {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    position: relative;
+    @include mobile {
+      grid-column-start: 3;
+      grid-column-end: 6;
+      grid-row-start: 1;
+      grid-row-end: 1;
+    }
+
+    > button {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #187316;
+    }
+    &.active {
+      > button {
+        background: #1c961a;
+        transition: all 300ms;
+      }
+    }
+  }
+
+  .step-btn {
+    width: 100%;
+
+    > button {
+      width: 100%;
+      height: 100%;
+      // background: var(--neutral-neutral-600);
+      border: 1.5px solid var(--surface-outline-var);
+      color: #fff;
+    }
+    &:hover {
+      > button {
+        border: 1.5px solid var(--surface-outline-var);
+        background: var(--neutral-neutral-600);
+        transition: all 300ms;
+      }
+    }
+  }
+  .first-12 {
+    // grid-row-start: 4;
+    grid-area: 4 / 2 / auto / span 4;
+    @include mobile {
+      grid-area: 1 / 2 / span 4 / auto;
+    }
+  }
+  .second-12 {
+    // grid-row-start: 4;
+    grid-area: 4 / 6 / auto / span 4;
+    @include mobile {
+      grid-area: 5 / 2 / span 4 / auto;
+    }
+  }
+  .third-12 {
+    // grid-row-start: 4;
+    grid-area: 4 / 10 / auto / span 4;
+    @include mobile {
+      grid-area: 9 / 2 / span 4 / auto;
+    }
+  }
+  .bottom-btn {
+    > button {
+      width: 100%;
+      height: 100%;
+      border: 1.5px solid var(--surface-outline-var);
+      color: #fff;
+      &.red {
+        background: #971a29;
+        border: none;
+        &:hover {
+          background: #fd2741;
+          transition: all 300ms;
+        }
+      }
+      &.gray {
+        background: var(--neutral-neutral-700);
+        border: none;
+        &:hover {
+          background: var(--neutral-neutral-600);
+          transition: all 300ms;
+        }
+      }
+    }
+    &:hover {
+      > button {
+        border: 1.5px solid var(--surface-outline-var);
+        background: var(--neutral-neutral-600);
+        transition: all 300ms;
+        &.red {
+          border: none;
+        }
+        &.gray {
+          border: none;
+        }
+      }
+    }
+  }
+  .two-times-btn {
+    > button {
+      width: 100%;
+      height: 100%;
+      // background-color: #aaa;
+      border: 1.5px solid var(--surface-outline-var);
+      color: #fff;
+      &.red {
+        background-color: $primary-color;
+      }
+    }
+    &:hover {
+      > button {
+        border: 1.5px solid var(--surface-outline-var);
+        background: var(--neutral-neutral-600);
+        transition: all 300ms;
+        // transform: translateY(-4px);
+        // box-shadow: $gray 0px 4px 2px;
+      }
+    }
+  }
+  .step-btn,
+  .bottom-btn {
+    > button {
+      span {
+        @include mobile {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}
+
+.number-group {
+  // border: 1px solid $gray;
+  grid-column-start: 2;
+  grid-column-end: 14;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  flex-direction: column-reverse;
+  gap: 4px;
+  @include mobile {
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 14;
+  }
+  > div {
+    position: relative;
+    @include mobile {
+      grid-area: auto !important;
+    }
+    button {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+
+      &.top-side {
+        height: 30%;
+        top: -2px;
+        // background-color: blue;
+        z-index: 50;
+        @include mobile {
+          transform: translate(50%, -50%);
+          left: auto;
+          right: -2px;
+          top: auto;
+          bottom: -50%;
+          height: 100%;
+          width: 30%;
+        }
+      }
+
+      &.right-side {
+        width: 30%;
+        left: auto;
+        right: -2px;
+        transform: translate(50%, -50%);
+        // background-color: red;
+        z-index: 60;
+        @include mobile {
+          right: auto;
+          left: 50%;
+          top: auto;
+          bottom: 0;
+          transform: translate(-50%, 50%);
+          width: 100%;
+          height: 30%;
+        }
+      }
+
+      &.left-side {
+        width: 30%;
+        left: -2px;
+        transform: translate(-50%, -50%);
+        // background-color: green;
+        z-index: 60;
+        @include mobile {
+          transform: translate(0%, -50%);
+          width: 100%;
+          height: 30%;
+          left: 0%;
+          top: 0;
+        }
+      }
+
+      &.center-side {
+        width: 100%;
+        height: 100%;
+        // background-color: beige;
+      }
+
+      &.corner-side {
+        left: auto;
+        top: -2px;
+        right: -2px;
+        // background-color: fuchsia;
+        width: 20px;
+        height: 20px;
+        transform: translate(50%, -50%);
+        z-index: 100;
+        @include mobile {
+          top: auto;
+          right: -2px;
+          bottom: 2px;
+          transform: translate(50%, 50%);
+        }
+      }
+
+      &.left-corner-side {
+        right: auto;
+        top: -2px;
+        left: -2px;
+        width: 20px;
+        height: 20px;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        // background-color: blue;
+        @include mobile {
+          left: auto;
+          top: -2px;
+          right: -2px;
+          width: 20px;
+          height: 20px;
+          transform: translate(50%, -50%);
+          z-index: 100;
+        }
+      }
+    }
+    > span {
+      // position: absolute;
+      // left: 50%;
+      // top: 50%;
+      // transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 300ms;
+      position: relative;
+      color: var(--surface-on-surface);
+      font-weight: 500;
+      line-height: 21px; /* 150% */
+    }
+    &.red {
+      > span {
+        background: #971a29;
+      }
+    }
+    &.black {
+      > span {
+        background: var(--neutral-neutral-700);
+      }
+    }
+    &.active {
+      &.red {
+        > span {
+          background: #fd2741;
+        }
+      }
+      &.black {
+        > span {
+          background: var(--neutral-neutral-600);
+        }
+      }
+    }
+  }
+}

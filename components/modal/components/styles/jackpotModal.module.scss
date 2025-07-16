@@ -1,0 +1,67 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.jackpot-modal {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: calc(100dvh - 200px);
+  max-height: 640px;
+  padding-bottom: 24px;
+
+  > .top {
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > span {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+
+  > .content {
+    width: 100%;
+    padding: 8px 24px 0px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: scroll;
+    flex: 1;
+    .example-img {
+      width: 253px;
+      margin: 0 auto;
+      > img {
+        width: 100%;
+      }
+    }
+    .example-img-winmodal {
+      width: 212px;
+      margin: 0 auto;
+      // display: none;
+      > img {
+        width: 100%;
+      }
+    }
+    pre {
+      color: var(--surface-on-surface);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    @include mobile {
+      padding: 8px 16px 0px 16px;
+    }
+  }
+}

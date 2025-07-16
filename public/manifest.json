@@ -1,0 +1,21 @@
+{
+  "name": "Yummygame",
+  "short_name": "Yummygame",
+  "description": "The new decentralized Casino: Experience the future of fair gambling",
+  "icons": [
+    {
+      "src": "https://www.yummygame.io/images/meta/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://www.yummygame.io/images/meta/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#13161b",
+  "theme_color": "#13161b",
+  "display": "standalone"
+}

@@ -1,0 +1,107 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.disable-modal {
+  // height: 640px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  > .top {
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+
+  .content {
+    width: 100%;
+    padding: 8px 24px 32px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex: 1;
+    gap: 24px;
+    @include mobile {
+      padding: 8 16px 24px 16px;
+    }
+
+    > p {
+      color: var(--surface-on-surface);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    > .verification-container {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      > .top {
+        > span {
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+          opacity: 0.6;
+        }
+      }
+      > input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        left: 0;
+        top: 0;
+      }
+      .code-input-group {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4px;
+        position: relative;
+        > .box {
+          width: 38px;
+          height: 38px;
+          border-radius: 8px;
+          background: var(--Surface-Surf-Container-Low, #161b21);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: text;
+          &:nth-child(3) {
+            margin-right: 8px;
+          }
+
+          > span {
+            color: rgba($color: #e3e3e5, $alpha: 0.6);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+          }
+          &.focus {
+            border: 1px solid var(--Surface-Outline, #8f9197);
+          }
+        }
+      }
+    }
+  }
+  > button {
+    height: 48px;
+    margin-top: 24px;
+  }
+}

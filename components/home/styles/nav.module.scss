@@ -1,0 +1,1185 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.fixed-box {
+  border-radius: 4px;
+  background: var(--surface-surf-container-highest);
+  padding: 4px 8px;
+  color: var(--surface-on-surface);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.24px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5700;
+}
+
+.bottom-nav {
+  width: 100%;
+  height: 62px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: var(--surface-surf-container);
+  z-index: 5650;
+  @include mobile {
+    display: flex;
+  }
+
+  > button,
+  a {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    > span {
+      text-align: left;
+
+      &:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        > span {
+          width: 100%;
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          &.menu {
+            background-image: url("/images/nav/menu_mo.svg");
+          }
+          &.affiliate {
+            background-image: url("/images/nav/affiliate_mo.svg");
+          }
+          &.casino {
+            background-image: url("/images/nav/casino_mo.svg");
+          }
+          &.sports {
+            background-image: url("/images/nav/sports_mo.svg");
+          }
+          &.bonus {
+            background-image: url("/images/nav/bonus_mo.svg");
+          }
+          &.airdrop {
+            background-image: url("/images/nav/airdrop_mo.svg");
+          }
+          &.chat {
+            background-image: url(/images/header/ico_chat.svg);
+            position: relative;
+            > .new {
+              position: absolute;
+              padding: 2px;
+              top: 0px;
+              right: 0px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 100%;
+              // background: var(--surface-surf-container-low);
+              background-color: #13161b;
+
+              > span {
+                width: 6px;
+                height: 6px;
+                background-color: #39c3ff;
+                border-radius: 16px;
+              }
+              // color: #39c3ff;
+            }
+          }
+          &.notice {
+            background-image: url(/images/header/ico_notice.svg);
+            position: relative;
+            > .new {
+              position: absolute;
+              padding: 2px;
+              top: 0px;
+              right: 0px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 100%;
+              // background: var(--surface-surf-container-low);
+              background-color: #13161b;
+
+              > span {
+                width: 6px;
+                height: 6px;
+                background-color: #39c3ff;
+                border-radius: 16px;
+              }
+              // color: #39c3ff;
+            }
+          }
+          &.home {
+            background-image: url("/images/common/img_logo_flower_mo.webp");
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 43px;
+            height: 40px;
+          }
+        }
+      }
+      &.title {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.5;
+        color: var(--surface-on-surface);
+        transition: background-color 500ms;
+      }
+    }
+
+    &.active {
+      span {
+        &.title {
+          color: var(--surface-on-surface);
+          transition: background-color 500ms;
+        }
+        &:first-child {
+          > span {
+            &.menu {
+              background-image: url("/images/nav/menu_mo_r.svg");
+            }
+            &.affiliate {
+              background-image: url("/images/nav/affiliate_mo_r.svg");
+            }
+            &.bonus {
+              background-image: url("/images/nav/bonus_mo_r.svg");
+            }
+            &.casino {
+              background-image: url("/images/nav/casino_mo_r.svg");
+            }
+            &.sports {
+              background-image: url("/images/nav/sports_mo_r.svg");
+            }
+            &.airdrop {
+              background-image: url("/images/nav/airdrop_mo_r.svg");
+            }
+            &.chat {
+              background-image: url(/images/header/ico_chat_w.svg);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-wrapper {
+  position: fixed;
+
+  left: 0;
+  top: calc(64px);
+  width: 216px;
+  z-index: 5600;
+  overflow-y: scroll;
+  &.hide {
+    width: 64px;
+  }
+  @include mobile {
+    width: 100%;
+    &.hide {
+      z-index: -1;
+    }
+  }
+  &.submenu {
+    transition: none;
+    width: calc(216px + 188px);
+    //background-color: red;
+    @include mobile {
+      width: 100%;
+    }
+  }
+  > div {
+    width: 216px;
+
+    height: calc(100dvh - 64px);
+
+    &.main {
+      height: calc(100dvh - 64px - 34px);
+      top: calc(64px + 34px);
+    }
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-right: 1px solid var(--surface-surf-container);
+    background-color: var(--surface-surf-container-low);
+
+    padding: 0px 0px 0px 0px;
+    box-shadow:
+      0px 1px 2px 0px rgba($color: var(--theme-color), $alpha: 0.3),
+      0px 1px 3px 1px rgba($color: var(--theme-color), $alpha: 0.15);
+    transition:
+      top 100ms,
+      height 100ms;
+    transform: translateY(0%);
+
+    &.hide {
+      transform: translateY(0%);
+      transition:
+        top 100ms,
+        height 100ms;
+      width: 64px;
+      flex: 64px 0 0;
+      padding: 0px;
+      overflow-x: hidden;
+      .submenu,
+      .side-menu,
+      .dropdown-row ul li span.arrow {
+        display: none !important;
+      }
+    }
+    @include mobile {
+      width: 100%;
+      height: calc(100dvh - 56px - 62px);
+      transition: 300ms transform;
+      overflow-x: hidden;
+      .submenu {
+        display: none !important;
+      }
+      &.main {
+        height: calc(100dvh - 56px - 34px - 62px);
+        // top: calc(56px + 34px);
+      }
+
+      &.hide {
+        transition: 300ms transform;
+        height: calc(100% - 62px);
+        width: 100%;
+        padding: 16px;
+        // padding: 0;
+        transform: translateY(200%);
+      }
+    }
+
+    .banner-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 216px;
+      border-bottom: 1px solid var(--Neutral-Neutral-700, #282e35);
+      padding: 8px 16px 8px 16px;
+      @include mobile {
+        width: 100%;
+        gap: 8px;
+        padding: 8px 16px 8px 16px;
+      }
+
+      > button.spin {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        @include mobile {
+          padding: 8px 0;
+        }
+        > img {
+          width: 32px;
+        }
+        > p {
+          //color: var(--surface-on-surface);
+
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: 0.24px;
+          //color: #e3e3e5;
+          color: #fff;
+          flex: 1;
+          text-align: left;
+        }
+      }
+
+      > a {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        @include mobile {
+          padding: 8px 0;
+        }
+        > img {
+          width: 32px;
+        }
+        > div {
+          flex: 1;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          > p {
+            color: var(--surface-on-surface);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.24px;
+
+            &:first-child {
+              font-size: 14px;
+              color: #fff;
+              > span {
+                //color: #e3e3e5;
+              }
+            }
+          }
+        }
+      }
+
+      .banner-group-row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        a {
+          flex: 1;
+        }
+      }
+    }
+    @include notMobile {
+      &.hide {
+        .banner-group {
+          padding: 0 8px;
+          width: 100%;
+          > a {
+            flex: auto;
+            width: 100%;
+            height: 48px;
+            > img {
+              width: 32px;
+            }
+            > div {
+              display: none;
+            }
+          }
+          > button {
+            > p {
+              display: none;
+            }
+          }
+
+          .banner-group-row {
+            flex-direction: column;
+            a {
+              flex: auto;
+              width: 100%;
+              height: 48px;
+              > img {
+                width: 32px;
+              }
+            }
+          }
+        }
+        nav {
+          > ul {
+            padding: 0 !important;
+          }
+        }
+      }
+    }
+    nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      //gap: 8px;
+
+      width: 216px;
+      padding: 0 0px 40px 0px;
+
+      @include mobile {
+        width: 100%;
+      }
+      ul + ul {
+        padding: 8px 0px;
+        border-top: 1px solid #282e35;
+      }
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        &.no-padding {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        li {
+          color: #fff;
+          width: 100%;
+          // height: 40px;
+          > a,
+          button,
+          .dropdown-link {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            width: 100%;
+            padding: 0px 20px;
+            border-radius: 8px;
+            height: 40px;
+            * {
+              transition: background-color 300ms;
+            }
+            @include mobile {
+              height: auto;
+              padding: 12px 24px;
+            }
+            > a {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+            span {
+              text-align: left;
+
+              &.ico {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                > span {
+                  width: 100%;
+                  height: 100%;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  &.affiliate {
+                    background-image: url("/images/nav/affiliate_a.svg");
+                  }
+                  &.bonus {
+                    background-image: url("/images/nav/bonus_a.svg");
+                  }
+                  &.crash {
+                    background-image: url("/images/nav/crash_a.svg");
+                  }
+                  &.dice {
+                    background-image: url("/images/nav/dice_a.svg");
+                  }
+                  &.fair {
+                    background-image: url("/images/nav/fair_a.svg");
+                  }
+                  &.flip {
+                    background-image: url("/images/nav/flip_a.svg");
+                  }
+                  &.mine {
+                    background-image: url("/images/nav/mine_a.svg");
+                  }
+                  &.roulette {
+                    background-image: url("/images/nav/roulette_a.svg");
+                  }
+                  &.support {
+                    background-image: url("/images/nav/support_a.svg");
+                  }
+                  &.ultimatedice {
+                    background-image: url("/images/nav/ultimatedice_a.svg");
+                  }
+                  &.wheel {
+                    background-image: url("/images/nav/wheel_a.svg");
+                  }
+                  &.language {
+                    background-image: url("/images/nav/language_a.svg");
+                  }
+                  &.displayFiat {
+                    background-image: url("/images/nav/displayFiat_a.svg");
+                  }
+                  &.profile {
+                    background-image: url("/images/nav/profile_a.svg");
+                  }
+                  &.wallet {
+                    background-image: url("/images/nav/wallet_a.svg");
+                  }
+                  &.setting {
+                    background-image: url("/images/nav/setting_a.svg");
+                  }
+                  &.login {
+                    background-image: url("/images/nav/login_a.svg");
+                  }
+                  &.newReleases {
+                    background-image: url("/images/nav/newReleases_a.svg");
+                  }
+                  &.hotgames {
+                    background-image: url("/images/nav/hotgames_a.svg");
+                  }
+                  &.slots {
+                    background-image: url("/images/nav/slots_a.svg");
+                  }
+                  &.livecasino {
+                    background-image: url("/images/nav/livecasino_a.svg");
+                  }
+                  &.poker {
+                    background-image: url("/images/nav/poker_a.svg");
+                  }
+                  &.baccarat {
+                    background-image: url("/images/nav/baccarat_a.svg");
+                  }
+                  &.card {
+                    background-image: url("/images/nav/card_a.svg");
+                  }
+                  &.providerroulette {
+                    background-image: url("/images/nav/providerroulette_a.svg");
+                  }
+                  &.original {
+                    background-image: url("/images/nav/original_a.svg");
+                  }
+                  &.favorites {
+                    background-image: url("/images/nav/favorites_a.svg");
+                  }
+                  &.recent {
+                    background-image: url("/images/nav/recent_a.svg");
+                  }
+                  &.vip {
+                    background-image: url("/images/nav/vip_a.svg");
+                  }
+                  &.challenges {
+                    background-image: url("/images/nav/challenges_a.svg");
+                  }
+                  &.mypage {
+                    background-image: url("/images/nav/mypage_a.svg");
+                  }
+                  &.transactions {
+                    background-image: url("/images/nav/transactions_a.svg");
+                  }
+                  &.casino {
+                    background-image: url("/images/nav/casino_a.svg");
+                  }
+                  &.liveSupport {
+                    background-image: url("/images/nav/liveSupport_a.svg");
+                  }
+                  &.plinko {
+                    background-image: url("/images/nav/plinko_a.svg");
+                  }
+                  &.limbo {
+                    background-image: url("/images/nav/limbo_a.svg");
+                  }
+                  &.provider {
+                    background-image: url("/images/nav/provider_a.svg");
+                  }
+                  &.redeem {
+                    background-image: url("/images/nav/redeem_a.svg");
+                  }
+                  &.partner {
+                    background-image: url("/images/nav/partner_a.svg");
+                  }
+                  &.lottery {
+                    background-image: url("/images/nav/lottery_a.svg");
+                  }
+                  &.mainCasino {
+                    background-image: url("/images/nav/mainCasino_a.svg");
+                  }
+
+                  //sport
+                  &.sports {
+                    background-image: url("/images/nav/sports_a.svg");
+                  }
+                  &.mybets {
+                    background-image: url("/images/nav/mybets_a.svg");
+                  }
+                  &.soccer {
+                    background-image: url("/images/nav/soccer_a.svg");
+                  }
+                  &.basketball {
+                    background-image: url("/images/nav/basketball_a.svg");
+                  }
+                  &.tennis {
+                    background-image: url("/images/nav/tennis_a.svg");
+                  }
+                  &.icehockey {
+                    background-image: url("/images/nav/icehockey_a.svg");
+                  }
+                  &.baseball {
+                    background-image: url("/images/nav/baseball_a.svg");
+                  }
+                  &.volleyball {
+                    background-image: url("/images/nav/volleyball_a.svg");
+                  }
+                  &.handball {
+                    background-image: url("/images/nav/handball_a.svg");
+                  }
+                  &.americanfootball {
+                    background-image: url("/images/nav/americanfootball_a.svg");
+                  }
+                  &.esports {
+                    background-image: url("/images/nav/esports_a.svg");
+                  }
+                  &.tabletennis {
+                    background-image: url("/images/nav/tabletennis_a.svg");
+                  }
+                }
+              }
+              &.title {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 1.5;
+                //color: var(--surface-on-surface);
+                color: #fff;
+                flex: 1;
+                transition: background-color 500ms;
+                word-break: keep-all;
+              }
+              &.sub {
+                margin-left: auto;
+                color: var(--neutral-neutral-300);
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1.5;
+              }
+            }
+
+            &:hover {
+              //background-color: var(--surface-surf-container);
+            }
+
+            &:hover,
+            &.active {
+              span {
+                &.title {
+                  color: var(--surface-signature-surface);
+                  transition: background-color 500ms;
+                }
+                &:first-child {
+                  > span {
+                    &.affiliate {
+                      background-image: url("/images/nav/affiliate_r.svg");
+                    }
+                    &.bonus {
+                      background-image: url("/images/nav/bonus_r.svg");
+                    }
+                    &.crash {
+                      background-image: url("/images/nav/crash_r.svg");
+                    }
+                    &.dice {
+                      background-image: url("/images/nav/dice_r.svg");
+                    }
+                    &.flip {
+                      background-image: url("/images/nav/flip_r.svg");
+                    }
+                    &.mine {
+                      background-image: url("/images/nav/mine_r.svg");
+                    }
+                    &.roulette {
+                      background-image: url("/images/nav/roulette_r.svg");
+                    }
+                    &.support {
+                      background-image: url("/images/nav/support_r.svg");
+                    }
+                    &.ultimatedice {
+                      background-image: url("/images/nav/ultimatedice_r.svg");
+                    }
+                    &.wheel {
+                      background-image: url("/images/nav/wheel_r.svg");
+                    }
+                    &.language {
+                      background-image: url("/images/nav/language_r.svg");
+                    }
+                    &.displayFiat {
+                      background-image: url("/images/nav/displayFiat_r.svg");
+                    }
+                    &.profile {
+                      background-image: url("/images/nav/profile_r.svg");
+                    }
+                    &.wallet {
+                      background-image: url("/images/nav/wallet_r.svg");
+                    }
+                    &.setting {
+                      background-image: url("/images/nav/setting_r.svg");
+                    }
+                    &.login {
+                      background-image: url("/images/nav/login_r.svg");
+                    }
+
+                    &.newReleases {
+                      background-image: url("/images/nav/newReleases_r.svg");
+                    }
+                    &.hotgames {
+                      background-image: url("/images/nav/hotgames_r.svg");
+                    }
+                    &.slots {
+                      background-image: url("/images/nav/slots_r.svg");
+                    }
+                    &.livecasino {
+                      background-image: url("/images/nav/livecasino_r.svg");
+                    }
+                    &.poker {
+                      background-image: url("/images/nav/poker_r.svg");
+                    }
+                    &.baccarat {
+                      background-image: url("/images/nav/baccarat_r.svg");
+                    }
+                    &.card {
+                      background-image: url("/images/nav/card_r.svg");
+                    }
+                    &.providerroulette {
+                      background-image: url("/images/nav/providerroulette_r.svg");
+                    }
+                    &.original {
+                      background-image: url("/images/nav/original_r.svg");
+                    }
+                    &.favorites {
+                      background-image: url("/images/nav/favorites_r.svg");
+                    }
+                    &.recent {
+                      background-image: url("/images/nav/recent_r.svg");
+                    }
+                    &.vip {
+                      background-image: url("/images/nav/vip_r.svg");
+                    }
+                    &.challenges {
+                      background-image: url("/images/nav/challenges_r.svg");
+                    }
+                    &.mypage {
+                      background-image: url("/images/nav/mypage_r.svg");
+                    }
+                    &.transactions {
+                      background-image: url("/images/nav/transactions_r.svg");
+                    }
+                    &.casino {
+                      background-image: url("/images/nav/casino_r.svg");
+                    }
+                    &.mypage {
+                      background-image: url("/images/nav/mypage_r.svg");
+                    }
+                    &.liveSupport {
+                      background-image: url("/images/nav/liveSupport_r.svg");
+                    }
+                    &.plinko {
+                      background-image: url("/images/nav/plinko_r.svg");
+                    }
+                    &.limbo {
+                      background-image: url("/images/nav/limbo_r.svg");
+                    }
+                    &.provider {
+                      background-image: url("/images/nav/provider_r.svg");
+                    }
+                    &.redeem {
+                      background-image: url("/images/nav/redeem_r.svg");
+                    }
+                    &.partner {
+                      background-image: url("/images/nav/partner_r.svg");
+                    }
+                    &.lottery {
+                      background-image: url("/images/nav/lottery_r.svg");
+                    }
+                    &.mainCasino {
+                      background-image: url("/images/nav/mainCasino_r.svg");
+                    }
+
+                    //sport
+                    &.sports {
+                      background-image: url("/images/nav/sports_r.svg");
+                    }
+                    &.mybets {
+                      background-image: url("/images/nav/mybets_r.svg");
+                    }
+                    &.soccer {
+                      background-image: url("/images/nav/soccer_r.svg");
+                    }
+                    &.basketball {
+                      background-image: url("/images/nav/basketball_r.svg");
+                    }
+                    &.tennis {
+                      background-image: url("/images/nav/tennis_r.svg");
+                    }
+                    &.icehockey {
+                      background-image: url("/images/nav/icehockey_r.svg");
+                    }
+                    &.baseball {
+                      background-image: url("/images/nav/baseball_r.svg");
+                    }
+                    &.volleyball {
+                      background-image: url("/images/nav/volleyball_r.svg");
+                    }
+                    &.handball {
+                      background-image: url("/images/nav/handball_r.svg");
+                    }
+                    &.americanfootball {
+                      background-image: url("/images/nav/americanfootball_r.svg");
+                    }
+                    &.esports {
+                      background-image: url("/images/nav/esports_r.svg");
+                    }
+                    &.tabletennis {
+                      background-image: url("/images/nav/tabletennis_r.svg");
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .dropdown-row {
+            width: 100%;
+            position: relative;
+            height: 100%;
+            padding: 8px 0;
+
+            &.active {
+              background: var(--Surface-Surface-Dim, #111317);
+            }
+            > div.dropdown-parent {
+              position: relative;
+              span,
+              button {
+                &.arrow {
+                  transition: transform 300ms;
+                  background-position: center;
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  width: 24px;
+                  height: 24px;
+                  // background-image: url("/images/common/ico_arrow_w.svg");
+                  background-image: url("/images/common/ico_arrow_w.svg");
+                  position: absolute;
+                  top: 50%;
+                  right: 12px;
+                  transform: translateY(-50%);
+                  padding: 0;
+                }
+              }
+              &.active {
+                span,
+                button {
+                  &.arrow {
+                    transition: transform 300ms;
+                    transform: translateY(-50%) rotate(180deg);
+                    //background-image: url("/images/common/ico_arrow_w.svg");
+                  }
+                }
+              }
+            }
+
+            div.dropdown-link {
+              position: relative;
+              span,
+              button {
+                &.arrow {
+                  transition: transform 300ms;
+                  background-position: center;
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  width: 24px;
+                  height: 24px;
+                  // background-image: url("/images/common/ico_arrow_w.svg");
+                  background-image: url("/images/common/ico_arrow_w.svg");
+                  position: absolute;
+                  top: 50%;
+                  right: 12px;
+                  transform: translateY(-50%);
+                  padding: 0;
+                }
+              }
+            }
+
+            div.dropdown-parent {
+              span,
+              button {
+                &.arrow {
+                  background-color: rgba(47, 54, 63, 0.5);
+                  border-radius: 8px;
+                }
+              }
+            }
+
+            ul {
+              li {
+                > a,
+                button,
+                .dropdown-link {
+                  padding: 0px 12px 0px 28px;
+                  position: relative;
+
+                  @include mobile {
+                    padding: 0px 12px 0px 40px;
+                    height: 48px;
+                    > a,
+                    button {
+                      height: 100%;
+                    }
+                  }
+
+                  span {
+                    &.arrow {
+                      //margin-left: auto;
+                      background-image: url("/images/common/ico_arrow_w.svg");
+                      transform: translateY(-50%) rotate(-90deg);
+                      @include mobile {
+                        display: none !important;
+                      }
+                    }
+                  }
+
+                  > .side-menu {
+                    display: none;
+                    position: absolute;
+                    left: 100%;
+                    top: 0;
+                    padding-left: 8px;
+
+                    > div {
+                      width: 180px;
+                      padding: 8px 12px;
+                      border-right: 1px solid
+                        var(--Surface-Surf-Container, #1e2228);
+                      background: var(--Surface-Surface-Dim, #111317);
+                      ul {
+                        li {
+                          > a {
+                            padding: 8px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            > img {
+                              width: 24px;
+                            }
+                            > span {
+                              color: var(--surface-on-surface);
+                              font-size: 14px;
+                              font-weight: 500;
+                              line-height: 1.5;
+                              &.active {
+                                color: var(
+                                  --Surface-Signature-Surface,
+                                  #db2d59
+                                );
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  &:hover {
+                    > .side-menu {
+                      display: block;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          transition: background-color 500ms;
+        }
+      }
+    }
+
+    @include notMobile {
+      &.hide {
+        nav {
+          width: 100%;
+          ul {
+            li {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              > a,
+              button,
+              .dropdown-row,
+              .dropdown-link,
+              .dropdown-parent {
+                // aspect-ratio: 1 / 1;
+                width: 48px;
+                height: 48px;
+                padding: 0;
+                justify-content: center;
+
+                span {
+                  &.title {
+                    display: none;
+                  }
+                  &.sub {
+                    display: none;
+                  }
+                }
+              }
+
+              .dropdown-row {
+                width: 100%;
+                position: relative;
+                height: 100%;
+
+                > button,
+                .dropdown-link,
+                .dropdown-parent {
+                  position: relative;
+                  margin: 0 auto;
+                  span,
+                  button {
+                    &.arrow {
+                      right: 50%;
+                      transform: translateX(50%);
+                      top: 60%;
+                      background-color: transparent !important;
+                    }
+                  }
+                  &.active {
+                    span,
+                    button {
+                      &.arrow {
+                        transform: translateX(50%) rotate(180deg);
+                      }
+                    }
+                  }
+                }
+                ul {
+                  width: auto;
+                  // position: fixed;
+                  // left: 64px;
+                  // top: 0;
+                  // width: 30px;
+                  margin-top: 8px;
+                  padding: 8px;
+                  border-radius: 0px 8px 8px 0px;
+                  background: #13161b;
+                  li {
+                    width: auto;
+                    > a,
+                    button,
+                    .dropdown-link {
+                      // padding: 0px 12px 0px 24px;
+                      padding: 12px;
+                      &:hover {
+                        background: var(--surface-surf-container-high, #282e35);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .setting-box {
+      width: 100%;
+      padding-top: 24px;
+      border-top: 1px solid var(--neutral-neutral-300);
+      > p {
+        color: var(--neutral-neutral-300);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+    }
+
+    .appearance-box {
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 56px;
+      gap: 12px;
+
+      .ico {
+        width: 24px;
+        height: 24px;
+        background-image: var(--ico-moon-g);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+      .text {
+        color: var(--surface-on-surface-var);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &::after {
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+
+    content: url("/images/nav/affiliate_a.svg") url("/images/nav/bonus_a.svg")
+      url("/images/nav/crash_a.svg") url("/images/nav/dice_a.svg")
+      url("/images/nav/fair_a.svg") url("/images/nav/airdrop_a.svg")
+      url("/images/nav/flip_a.svg") url("/images/nav/mine_a.svg")
+      url("/images/nav/roulette_a.svg") url("/images/nav/support_a.svg")
+      url("/images/nav/ultimatedice_a.svg") url("/images/nav/wheel_a.svg")
+      url("/images/nav/language_a.svg") url("/images/nav/displayFiat_a.svg")
+      url("/images/nav/profile_a.svg") url("/images/nav/wallet_a.svg")
+      url("/images/nav/setting_a.svg") url("/images/nav/login_a.svg")
+      url("/images/nav/logout_a.svg") url("/images/nav/newReleases_a.svg")
+      url("/images/nav/hotgames_a.svg") url("/images/nav/slots_a.svg")
+      url("/images/nav/livecasino_a.svg") url("/images/nav/poker_a.svg")
+      url("/images/nav/baccarat_a.svg") url("/images/nav/card_a.svg")
+      url("/images/nav/providerroulette.svg")
+      url("/images/nav/providerroulette_a.svg") url("/images/nav/original.svg")
+      url("/images/nav/original_a.svg") url("/images/nav/original_a.svg")
+      url("/images/common/ico_arrow_w.svg")
+      url("/images/common/ico_arrow_g.svg") url("/images/nav/favorites_a.svg")
+      url("/images/nav/transactions_a.svg") url("/images/nav/casino_a.svg")
+      url("/images/nav/mypage_a.svg") url("/images/nav/transactions_a.svg")
+      url("/images/nav/recent_a.svg") url("/images/nav/affiliate_r.svg")
+      url("/images/nav/bonus_r.svg") url("/images/nav/crash_r.svg")
+      url("/images/nav/dice_r.svg") url("/images/nav/flip_r.svg")
+      url("/images/nav/mine_r.svg") url("/images/nav/roulette_r.svg")
+      url("/images/nav/ultimatedice_r.svg") url("/images/nav/wheel_r.svg")
+      url("/images/nav/language_r.svg") url("/images/nav/displayFiat_r.svg")
+      url("/images/nav/profile_r.svg") url("/images/nav/wallet_r.svg")
+      url("/images/nav/setting_r.svg") url("/images/nav/newReleases_r.svg")
+      url("/images/nav/hotgames_r.svg") url("/images/nav/slots_r.svg")
+      url("/images/nav/livecasino_r.svg") url("/images/nav/poker_r.svg")
+      url("/images/nav/baccarat_r.svg") url("/images/nav/card_r.svg")
+      url("/images/nav/providerroulette.svg")
+      url("/images/nav/providerroulette_r.svg") url("/images/nav/original.svg")
+      url("/images/nav/original_r.svg") url("/images/nav/original_r.svg")
+      url("/images/nav/favorites_r.svg") url("/images/nav/transactions_r.svg")
+      url("/images/nav/casino_r.svg") url("/images/nav/mypage_r.svg")
+      url("/images/nav/transactions_r.svg") url("/images/nav/recent_r.svg")
+      url("/images/nav/liveSupport_a.svg") url("/images/nav/liveSupport_r.svg")
+      url("/images/nav/vip_a.svg") url("/images/nav/vip_r.svg")
+      url("/images/nav/plinko_r.svg") url("/images/nav/plinko_r.svg")
+      url("/images/nav/limbo_r.svg") url("/images/nav/limbo_a.svg")
+      url("/images/nav/provider_a.svg") url("/images/nav/provider_r.svg")
+      url("/images/nav/redeem_a.svg") url("/images/nav/partner_a.svg")
+      url("/images/nav/redeem_r.svg") url("/images/nav/partner_r.svg")
+      url("/images/nav/lottery_a.svg") url("/images/nav/lottery_r.svg")
+      url("/images/nav/mainCasino_a.svg") url("/images/nav/mainCasino_r.svg")
+      url("/images/nav/sports_r.svg") url("/images/nav/mybets_r.svg")
+      url("/images/nav/soccer_r.svg") url("/images/nav/basketball_r.svg")
+      url("/images/nav/tennis_r.svg") url("/images/nav/icehockey_r.svg")
+      url("/images/nav/baseball_r.svg") url("/images/nav/volleyball_r.svg")
+      url("/images/nav/handball_r.svg")
+      url("/images/nav/americanfootball_r.svg") url("/images/nav/esports_r.svg")
+      url("/images/nav/sports_a.svg") url("/images/nav/mybets_a.svg")
+      url("/images/nav/soccer_a.svg") url("/images/nav/basketball_a.svg")
+      url("/images/nav/tennis_a.svg") url("/images/nav/icehockey_a.svg")
+      url("/images/nav/baseball_a.svg") url("/images/nav/volleyball_a.svg")
+      url("/images/nav/handball_a.svg")
+      url("/images/nav/americanfootball_a.svg") url("/images/nav/esports_a.svg")
+      url("/images/nav/tabletennis_a.svg") url("/images/nav/tabletennis_a.svg");
+  }
+}

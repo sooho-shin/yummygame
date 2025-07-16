@@ -1,0 +1,397 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.transactions-modal {
+  // height: 640px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-bottom: 32px;
+  > .top {
+    width: 100%;
+
+    height: 56px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+  .content {
+    width: 100%;
+    padding: 16px 24px 32px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    // gap: 24px;
+    // flex: 1;
+    height: calc(100dvh - 200px);
+    max-height: 552px;
+    overflow-y: scroll;
+    gap: 16px;
+    .dropbox-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      > div {
+        flex: 1;
+      }
+      // .input-group {
+      //   flex: 1;
+      // }
+    }
+    .history-box {
+      width: 100%;
+      overflow-x: scroll;
+      margin-bottom: 16px;
+
+      table {
+        min-width: 100%;
+        width: max-content;
+        thead {
+          border-bottom: 1px solid var(--surface-outline-var);
+          th {
+            padding: 8px 12px;
+            font-size: 0;
+            @include mobile {
+              padding: 8px;
+            }
+            > span {
+              color: var(--surface-on-surface-var);
+              font-size: 12px;
+              font-weight: 500;
+              line-height: 1.5;
+              opacity: 0.6;
+            }
+            &:first-child {
+              padding-left: 0px;
+            }
+            &:last-child {
+              padding-right: 0px;
+            }
+          }
+        }
+        tbody {
+          tr {
+            height: 32px;
+
+            &.not-data {
+              height: 160px;
+              .not-data-box {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 16px;
+                > .bear {
+                  width: 124px;
+                  height: 48px;
+                  background-image: url("/images/common/img_bear.webp");
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: 100%;
+                }
+                > p {
+                  color: var(--surface-on-surface);
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 21px;
+                }
+              }
+            }
+            &.betting {
+              td {
+                padding: 8px 12px;
+              }
+            }
+            td {
+              padding: 12px;
+              font-size: 0px;
+              @keyframes gradientAnimation {
+                0% {
+                  background-position: 0% 0%; /* 시작 지점 좌표 */
+                }
+                50% {
+                  background-position: 100% 100%; /* 끝 지점 좌표 */
+                }
+                100% {
+                  background-position: 0% 0%; /* 시작 지점 좌표 */
+                }
+              }
+              &.not-padding {
+                padding-top: 12px;
+                padding-bottom: 0;
+                @include mobile {
+                  padding-top: 8px;
+                }
+              }
+              .skeleton {
+                flex: 1;
+                width: 100%;
+                height: 28px;
+                display: flex;
+                position: relative;
+                border-radius: 16px;
+                // background-color: var(--surface-surf-container-high);
+                // min-width: 177px;
+                background: linear-gradient(
+                  to bottom right,
+                  #31363c,
+                  #161b21
+                ); /* 그라데이션 색상 설정 */
+                background-size: 200% 200%; /* 그라데이션 크기를 200%로 설정 */
+                animation: gradientAnimation 1.5s linear infinite; /* 5초 동안 linear한 방식으로 무한 반복하는 애니메이션 설정 */
+                // aspect-ratio: 1 / 0.97;
+              }
+
+              @include mobile {
+                padding: 8px;
+              }
+              &:first-child {
+                padding-left: 0;
+              }
+              &:last-child {
+                padding-right: 0;
+              }
+              > div,
+              button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+
+                &.double-line {
+                  align-items: flex-start;
+                  // padding: 8px 12px;
+                  flex-direction: column;
+                  gap: 0;
+                  @include mobile {
+                    padding: 0;
+                  }
+                  > div {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 8px;
+                    width: 100%;
+                    &:last-child {
+                      padding-left: 24px;
+                      > span {
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        flex: 1;
+                        text-align: left;
+                        max-width: 76px;
+                      }
+                    }
+                  }
+                }
+
+                button {
+                  width: 16px;
+                  height: 16px;
+                  &.link {
+                    background-image: url("/images/common/ico_arrow_w.svg");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    transform: rotate(-90deg);
+                  }
+                }
+
+                span {
+                  &.arrow {
+                    background-image: url("/images/common/ico_arrow_w.svg");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    transform: rotate(-90deg);
+                    width: 24px;
+                    height: 24px;
+                  }
+                  &.win {
+                    color: var(--semantic-success-500);
+                  }
+                  &.lose {
+                    color: var(--semantic-danger-500);
+                  }
+                  &.game-name {
+                    color: var(--surface-on-surface);
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    opacity: 0.6;
+                  }
+                  &.type {
+                    width: 16px;
+                    height: 16px;
+                    display: block;
+
+                    &.withdrawal {
+                      background-image: url("/images/modal/wallet/ico_withdraw.svg");
+                    }
+                    &.deposit {
+                      background-image: url("/images/modal/wallet/ico_deposit.svg");
+                    }
+                    &.swap {
+                      background-image: url("/images/modal/wallet/ico_swap.svg");
+                    }
+                    &.betting {
+                      background-image: url("/images/modal/wallet/ico_betting.svg");
+                    }
+                    &.jelClaim {
+                      background-image: url("/images/modal/wallet/ico_jelClaim.svg");
+                    }
+                    &.buyCrypto {
+                      background-image: url("/images/modal/wallet/ico_buyCrypto.svg");
+                    }
+                  }
+
+                  &.date {
+                    color: var(--surface-on-surface-var);
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 1.5;
+                  }
+
+                  &.status {
+                    color: var(--surface-on-surface-var);
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 1.5;
+                  }
+
+                  &.amount-type {
+                    &.withdrawal {
+                      color: var(--semantic-danger-500);
+                    }
+                    &.deposit {
+                      color: var(--semantic-success-500);
+                    }
+                    &.swap {
+                      color: var(--semantic-success-500);
+                    }
+                    &.betting {
+                      color: var(--semantic-success-500);
+                    }
+                    &.jelClaim {
+                      color: var(--semantic-success-500);
+                    }
+                  }
+
+                  &.coin {
+                    width: 16px;
+                    height: 16px;
+                    display: block;
+                    background-position: center;
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    transition: background-image 0ms;
+
+                    &.eth {
+                      background-image: url("/images/tokens/img_token_eth_circle.svg");
+                    }
+                    &.bnb {
+                      background-image: url("/images/tokens/img_token_bnb_circle.svg");
+                    }
+                    &.btc {
+                      background-image: url("/images/tokens/img_token_btc_circle.svg");
+                    }
+                    &.usdt {
+                      background-image: url("/images/tokens/img_token_usdt_circle.svg");
+                    }
+                    &.jel {
+                      background-image: url("/images/tokens/img_token_jel_circle.svg");
+                    }
+                    &.hon {
+                      background-image: url("/images/tokens/img_token_hon_circle.svg");
+                    }
+                    &.xrp {
+                      background-image: url("/images/tokens/img_token_xrp_circle.svg");
+                    }
+                    &.usdc {
+                      background-image: url("/images/tokens/img_token_usdc_circle.svg");
+                    }
+                    &.jel_lock {
+                      background-image: url("/images/tokens/img_token_usdc_circle.svg");
+                    }
+                  }
+                  color: var(--surface-on-surface);
+                  font-size: 12px;
+                  font-weight: 400;
+                  line-height: 1.5;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // .top{
+      //   width:100%;
+
+      // }
+    }
+  }
+  .notice-group {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    opacity: 0.6;
+    gap: 4px;
+    margin-top: 8px;
+    > .title {
+      color: var(--surface-on-surface-var);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    ul {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 4px;
+      li {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        &::before {
+          content: "·";
+          color: var(--surface-on-surface-var);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+          width: 8px;
+        }
+        span {
+          color: var(--surface-on-surface-var);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+          display: block;
+
+          flex: 1;
+        }
+      }
+    }
+  }
+}

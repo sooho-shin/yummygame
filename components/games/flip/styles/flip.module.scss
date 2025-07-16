@@ -1,0 +1,572 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+// 임시 시작
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  .game-wrapper {
+    width: 100%;
+    // height: 504px;
+    padding: 60px 40px 36px 40px;
+    background-image: url("/images/game/flip/img_flip_bg.webp");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    @include mobile {
+      padding: 12px 24px 16px 24px;
+    }
+
+    .bread-comp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      top: 16px;
+      left: 40px;
+      position: absolute;
+
+      span {
+        padding: 8px;
+        &:nth-child(1) {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+        &:nth-child(2) {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+          padding: 0;
+        }
+        &:nth-child(3) {
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+      }
+    }
+    .result-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 40px;
+      padding-bottom: 32px;
+
+      .result-row {
+        border-radius: 8px;
+
+        background: rgba(13, 36, 49, 0.2);
+
+        backdrop-filter: blur(2px);
+        width: 100%;
+        height: 48px;
+        max-width: 608px;
+        overflow: hidden;
+        .not-login-row {
+          width: 100%;
+          text-align: center;
+          color: var(--surface-on-surface);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.6;
+        }
+
+        @keyframes transform {
+          0% {
+            transform: translateX(40px);
+          }
+          100% {
+            transform: translateX(0px);
+          }
+        }
+        .coin-row {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 0 8px;
+          gap: 8px;
+          transform: translateX(0px);
+          &.ani {
+            animation: transform 500ms linear alternate;
+          }
+
+          .coin {
+            width: 32px;
+            height: 32px;
+            &.head {
+              background-image: url("/images/game/flip/img_coin_head.webp");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+            &.tail {
+              background-image: url("/images/game/flip/img_coin_tail.webp");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+            &.win {
+              opacity: 1;
+            }
+            &.lose {
+              opacity: 0.4;
+            }
+          }
+        }
+      }
+
+      .flip-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .result-box {
+          span {
+            &:last-child {
+              &.head {
+                color: #e3c839;
+              }
+
+              &.tail {
+                color: #21afff;
+              }
+
+              &.lose {
+                color: var(--var(surface-on-surface)-var) !important;
+              }
+            }
+          }
+        }
+
+        // &.head {
+        //   .coin-flip-box {
+        //     background-image: url("/images/game/flip/img_coin_bg_head.webp");
+        //   }
+        // }
+
+        // &.tail {
+        //   .coin-flip-box {
+        //     background-image: url("/images/game/flip/img_coin_bg_tail.webp");
+        //   }
+        // }
+        .result-box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          position: absolute;
+          top: 50%;
+          left: -56px;
+          transform: translate(-100%, -50%);
+          @include tablet {
+            left: -26px;
+          }
+          @include desktop {
+            &.tablet {
+              left: -26px;
+            }
+          }
+          > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            span {
+              &:first-child {
+                color: var(--surface-on-surface-var);
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.5;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 100%;
+              }
+              &:last-child {
+                font-family: Poppins;
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 1.5;
+              }
+            }
+          }
+          @include mobile {
+            left: -12px;
+            > div {
+              span {
+                &:first-child {
+                  font-size: 14px;
+                }
+                &:last-child {
+                  font-size: 24px;
+                }
+              }
+            }
+          }
+        }
+        @keyframes float {
+          0% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+        }
+        .magnification-box {
+          position: absolute;
+          top: 50%;
+          right: -56px;
+          transform: translate(100%, -50%);
+          @include tablet {
+            right: -26px;
+          }
+          @include desktop {
+            &.tablet {
+              right: -26px;
+            }
+          }
+
+          > div {
+            position: relative;
+            top: 0;
+            left: 0;
+
+            // transform: translate(100%, -50%);
+            > span {
+              position: absolute;
+              display: block;
+              color: var(--surface-on-surface);
+              font-family: Poppins;
+              font-size: 32px;
+              font-weight: 700;
+              line-height: 1.5;
+              white-space: nowrap;
+              transform: translateY(0px);
+              opacity: 1;
+              top: 0;
+
+              &:first-child {
+                position: relative;
+              }
+            }
+
+            &.lose {
+              > span {
+                color: var(--surface-on-surface-var);
+              }
+              @for $i from 2 through 5 {
+                span {
+                  &:nth-child(#{$i}) {
+                    $delay: $i * 100ms;
+                    transform: translateY(50px);
+                    opacity: 0;
+                    transition: 400ms;
+                    transition-delay: $delay;
+                  }
+                }
+              }
+            }
+            &.win {
+              @for $i from 2 through 5 {
+                span {
+                  &:nth-child(#{$i}) {
+                    $delay: $i * 100ms;
+                    transform: translateY(-50px);
+                    opacity: 0;
+                    transition: 400ms;
+                    transition-delay: $delay;
+                  }
+                }
+              }
+            }
+          }
+          @include mobile {
+            right: -12px;
+            > div {
+              > span {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+
+        .coin-flip-box {
+          width: 288px;
+          height: 288px;
+          padding: 64px;
+          position: relative;
+
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          &.head {
+            background-image: url("/images/game/flip/img_coin_bg_head.webp");
+          }
+
+          &.tail {
+            background-image: url("/images/game/flip/img_coin_bg_tail.webp");
+          }
+
+          @include tablet {
+            width: 220px;
+            height: 220px;
+            padding: 32px;
+          }
+
+          @include desktop {
+            &.tablet {
+              width: 220px;
+              height: 220px;
+              padding: 32px;
+            }
+          }
+
+          @include mobile {
+            width: 134px;
+            height: 134px;
+            padding: 20px;
+          }
+          @keyframes spin {
+            0% {
+              transform: rotate3d(0, 1, 0, 180deg);
+            }
+            10% {
+              transform: rotate3d(0, 1, 0, 360deg);
+            }
+            20% {
+              transform: rotate3d(0, 1, 0, 0);
+            }
+            30% {
+              transform: rotate3d(0, 1, 0, 360deg);
+            }
+            40% {
+              transform: rotate3d(0, 1, 0, 0);
+            }
+            50% {
+              transform: rotate3d(0, 1, 0, 360deg);
+            }
+            60% {
+              transform: rotate3d(0, 1, 0, 0);
+            }
+            70% {
+              transform: rotate3d(0, 1, 0, 360deg);
+            }
+            80% {
+              transform: rotate3d(0, 1, 0, 0);
+            }
+            90% {
+              transform: rotate3d(0, 1, 0, 180deg);
+            }
+            100% {
+              transform: rotate3d(0, 1, 0, 0);
+            }
+          }
+          .coin-box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.playing {
+              animation: spin 3s linear alternate;
+            }
+
+            &.reverse {
+              transform: rotate3d(0, 1, 0, 180deg);
+              &.playing {
+                animation: spin 3s linear alternate-reverse;
+              }
+            }
+            > div {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              left: 0;
+              top: 0;
+
+              &.head {
+                background-image: url("/images/game/flip/img_coin_head.webp");
+                background-position: center;
+                background-size: cover;
+                transform: rotateY(180deg);
+                backface-visibility: visible;
+                // &.hidden {
+                //   backface-visibility: hidden;
+                // }
+                // &.visible {
+                //   backface-visibility: visible;
+                // }
+              }
+
+              &.tail {
+                background-image: url("/images/game/flip/img_coin_tail.webp");
+                background-position: center;
+                background-size: cover;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                // &.hidden {
+                //   backface-visibility: hidden;
+                // }
+                // &.visible {
+                //   backface-visibility: visible;
+                // }
+              }
+            }
+          }
+          .left-stroke {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 138px;
+            height: 288px;
+
+            background-image: url("/images/game/flip/img_stroke_gray.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            &.active {
+              background-image: url("/images/game/flip/img_stroke_gold.webp");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+          }
+          .right-stroke {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 138px;
+            height: 288px;
+            transform: rotate(180deg);
+
+            background-image: url("/images/game/flip/img_stroke_gray.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            &.active {
+              background-image: url("/images/game/flip/img_stroke_blue.webp");
+            }
+          }
+        }
+      }
+    }
+  }
+  .choice-box {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      height: 73px;
+    }
+    .top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 4px;
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        opacity: 0.6;
+        span {
+          color: var(--surface-on-surface-var);
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+        .btn-tooltip {
+          width: 16px;
+          height: 16px;
+          margin-left: 4px;
+          background-image: url("/images/common/ico_tooltip_g.svg");
+          background-position: center;
+          background-size: cover;
+        }
+      }
+    }
+    .btn-row {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      > button {
+        border-radius: 8px;
+        opacity: 0.6;
+        background: var(--surface-surf-container);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        // flex-direction: column;
+        flex: 1;
+        height: 100%;
+        border: 1px solid var(--surface-surf-container);
+        &.active {
+          opacity: 1;
+        }
+        > span {
+          color: var(--surface-on-surface);
+          text-align: center;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+
+        &:first-child {
+          &::before {
+            content: "";
+            background-image: url("/images/game/flip/img_coin_head.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            width: 32px;
+            height: 32px;
+          }
+          &.active {
+            border: 1px solid #e3c839;
+          }
+        }
+        &:last-child {
+          &::before {
+            content: "";
+            background-image: url("/images/game/flip/img_coin_tail.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            width: 32px;
+            height: 32px;
+          }
+          &.active {
+            border: 1px solid #21afff;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.hon-drop-modal {
+  // height: 640px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  max-height: calc(100dvh - 100px);
+  max-width: 400px;
+
+  > .top {
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+  .content {
+    width: 100%;
+    padding: 0px 48px 40px 48px;
+    @include mobile {
+      padding: 0px 16px 40px 16px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex: 1;
+    // gap: 16px;
+    overflow-y: scroll;
+    p.small {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-family: Poppins;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    p.big {
+      color: var(--surface-on-surface);
+      font-family: Poppins;
+      font-size: 37px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    p.sub {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    > img {
+      margin: 20px 0 16px 0;
+    }
+    > p.date-info {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      > span {
+        font-weight: 700;
+      }
+    }
+    > p.crt {
+      color: var(--surface-on-surface);
+      text-align: center;
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 1.5;
+      word-break: keep-all;
+      br {
+        display: none;
+      }
+      @include mobile {
+        br {
+          display: block;
+        }
+      }
+      > span {
+        color: #f8cf4f;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+    }
+  }
+}

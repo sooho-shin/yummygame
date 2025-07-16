@@ -1,0 +1,106 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixin.scss";
+
+.content {
+  // flex: 1;
+  // overflow-x: hidden;
+  // overflow-y: scroll;
+  // min-height: 100%;
+  // width: 1440px;
+  // flex: 1440px 0 0;
+  position: relative;
+  min-height: 100dvh;
+
+  padding-top: 64px;
+  transition: 300ms all;
+  margin-left: 64px;
+  width: calc(100vw - 64px);
+  position: relative;
+  &.main {
+    padding-top: calc(64px + 34px);
+  }
+  &.swipe {
+    margin-left: 216px;
+    width: calc(100vw - 216px);
+  }
+  &.isShowNoticeOrChat {
+    // padding-right:
+    margin-right: 324px;
+    width: calc(100vw - 324px);
+  }
+  &.swipe {
+    &.isShowNoticeOrChat {
+      margin-left: 216px;
+      margin-right: 324px;
+      width: calc(100vw - 324px - 216px);
+    }
+  }
+
+  @include tablet {
+    margin-left: 64px !important;
+    width: calc(100vw - 64px) !important;
+    padding-right: 0px !important;
+    transition: none;
+    margin-right: 0px !important;
+  }
+  @include mobile {
+    width: calc(100vw) !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    transition: none;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+}
+
+.freshdesk-btn {
+  position: fixed;
+  bottom: 32px;
+  //right: 40px;
+  width: 182px;
+  height: 56px;
+  background-image: url("/images/common/img_support_bg.webp");
+  background-size: cover;
+  background-position: center;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: none !important;
+  transition: right 300ms;
+  @include mobile {
+    display: none;
+  }
+  > span {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px; /* 150% */
+  }
+  &::after {
+    content: "";
+    width: 36px;
+    height: 36px;
+    background-image: url("/images/common/img_support.webp");
+    background-size: cover;
+    background-position: center;
+  }
+  &:hover {
+    transition: none !important;
+    background-image: url("/images/common/img_support_bg_h.webp");
+    > span {
+      opacity: 0.6;
+    }
+    &::after {
+      content: "";
+      width: 36px;
+      height: 36px;
+      background-image: url("/images/common/img_support.webp");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.6;
+    }
+  }
+}

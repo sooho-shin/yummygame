@@ -1,0 +1,37 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  /* background: #fff; */
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 358px; */
+  padding: 0 56px;
+  gap: 16px;
+}
+
+.swiper-button-next:after {
+  content: "";
+  background-image: url("/images/common/ico_arrow_thin_w.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 72px;
+  height: 72px;
+}
+
+.swiper-button-prev:after {
+  content: "";
+  background-image: url("/images/common/ico_arrow_thin_w.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 72px;
+  height: 72px;
+  transform: rotate(180deg);
+}
